@@ -1,0 +1,51 @@
+{
+  "SiteURL": "https://bookstyle.xyz/wp",
+  "HomeURL": "https://bookstyle.xyz",
+  "InternalSiteURL": "http://bookstyle.xyz/wp/",
+  "InternalHomeURL": "http://bookstyle.xyz/",
+  "Plugin": {
+    "Version": "7.90"
+  },
+  "WordPress": {
+    "Version": "6.0.9",
+    "Content": "/home/apricothoney/bookstyle.xyz/public_html/wp/wp-content",
+    "Plugins": "/home/apricothoney/bookstyle.xyz/public_html/wp/wp-content/plugins",
+    "Themes": [
+      "/home/apricothoney/bookstyle.xyz/public_html/wp/wp-content/themes"
+    ],
+    "Uploads": "/home/apricothoney/bookstyle.xyz/public_html/wp/wp-content/uploads",
+    "UploadsURL": "http://bookstyle.xyz/wp/wp-content/uploads/"
+  },
+  "Database": {
+    "Version": "5.5.56-MariaDB",
+    "Charset": "utf8mb4",
+    "Collate": "",
+    "Prefix": "wp_"
+  },
+  "PHP": {
+    "Version": "7.3.33",
+    "System": "Linux",
+    "Integer": 8
+  },
+  "Plugins": [
+    "a3-lazy-load/a3-lazy-load.php",
+    "akismet/akismet.php",
+    "all-in-one-seo-pack/all_in_one_seo_pack.php",
+    "broken-link-checker/broken-link-checker.php",
+    "contact-form-7/wp-contact-form-7.php",
+    "custom-taxonomy-order-ne/customtaxorder.php",
+    "easy-smooth-scroll-links/index.php",
+    "jetpack/jetpack.php",
+    "lightbox-plus/lightboxplus.php",
+    "really-simple-csv-importer/rs-csv-importer.php",
+    "wp-multibyte-patch/wp-multibyte-patch.php"
+  ],
+  "Template": "bookstyle2015",
+  "Stylesheet": "bookstyle2015",
+  "Uploads": "",
+  "UploadsURL": "",
+  "Server": {
+    ".htaccess": "",
+    "web.config": ""
+  }
+}

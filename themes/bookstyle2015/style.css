@@ -1,0 +1,481 @@
+@charset "UTF-8";
+/*
+Theme Name: Bookstyle2015
+Theme URI: bookstyle.com
+Description: BookstyleのWordpressテーマ
+Version: 1.1
+Author: ねり
+Author URI: bookstyle.com
+*/
+.fixed {
+	position: fixed;
+	top: 0px;
+	z-index: 9999; 
+}
+
+.fixed_side {
+	position: fixed;
+	top: 26px;
+	z-index: 9999; 
+}
+
+/*==================================
+clear
+==================================*/
+.l_wrap ,
+section ,
+.snsIcon ,
+.gMenu ul ,
+.coverList ,
+.footer ,
+.header--change ,
+.coverList__box__btn {
+	overflow: hidden;
+	*zoom: 1; 
+}
+
+/*==================================
+layout
+==================================*/
+.l_wrap {
+	width: 100%;
+	margin-right: 210px;
+	min-width: 960px; 
+}
+
+.l_main {
+	position: relative;
+	margin: 0 130px 0 0; 
+}
+
+.sidePr {
+	float: right;
+	width: 130px; 
+}
+
+section {
+	margin: 0 auto;
+	padding: 0;
+	width: 960px; 
+}
+
+/*==================================
+module
+==================================*/
+a.more {
+	font-size: 13px;
+	line-height: 20px;
+	margin: 0;
+	padding-left: 160px; 
+}
+  a.more i {
+		vertical-align: middle; 
+}
+  a.more:link {
+		color: #000;
+		text-decoration: none; 
+}
+  a.more:visited {
+		color: #000;
+		text-decoration: none; 
+}
+  a.more:hover {
+		color: #000;
+		text-decoration: underline;
+		font-weight: normal; 
+}
+
+/*:: 罫線 :::::::::::::::::::::::*/
+hr {
+	border: none;
+	height: 5px;
+	background-image: url("common/images/second_line.gif");
+	background-repeat: repeat-x;
+	color: #FFFFFF;
+	margin: 20px auto;
+	width: 60%; 
+}
+
+/*==================================
+スマホ用
+==================================*/
+.spNavi ,
+.sb-slidebar {
+	display: none; 
+}
+
+/*==================================
+Header
+==================================*/
+.header .header--bg {
+	background: #F4F1E0 url(common/images/head_bg01.png) repeat;
+	border-bottom: 5px solid #FFCD4A;
+	min-width: 1300px; 
+}
+
+.header .snsIcon {
+	padding-top: 30px; 
+}
+  .header .snsIcon__item {
+		float: left;
+		margin-right: 10px; 
+}
+
+.header .hLogo {
+	margin-top: 60px; 
+}
+  .header .hLogo h1 {
+		background: url(common/images/icon_bs.png) no-repeat 0 0;
+		font-size: 50px;
+		font-weight: bold;
+		height: 60px;
+		line-height: 63px;
+		padding-left: 70px; 
+}
+    .header .hLogo h1 span {
+			font-size: 11px;
+			font-weight: normal;
+			display: block;
+			line-height: 11px; 
+}
+
+/*:: lastup :::::::::::::::::::::::*/
+.header .lastUp {
+	float: right;
+	margin-bottom: 20px;
+	width: 350px; 
+}
+  .header .lastUp dl dt {
+		clear: both;
+		float: left;
+		font-size: 12px;
+		line-height: 20px;
+		width: 75px; 
+}
+  .header .lastUp dl dd {
+		font-size: 12px;
+		line-height: 21px;
+		margin: 0;
+		padding-left: 75px; 
+}
+
+.lastUP__tit {
+	border-bottom: 2px solid #000;
+	font-size: 14px;
+	padding: 0 0 0px 10px;
+	margin-bottom: 5px; 
+}
+
+/*:: globalMenu :::::::::::::::::::::::*/
+.header .gMenu {
+	margin: 20px 0; 
+}
+  .header .gMenu ul li {
+		float: left;
+		list-style: none;
+		line-height: 27px;
+		margin-right: 20px;
+		padding-left: 30px; 
+}
+    .header .gMenu ul li:last-child {
+			margin-right: 0; 
+}
+    .header .gMenu ul li a:link {
+			font-size: 15px;
+			font-weight: bold;
+			text-decoration: none; 
+}
+    .header .gMenu ul li a:visited {
+			font-size: 15px;
+			font-weight: bold;
+			text-decoration: none; 
+}
+
+/*==================================
+maincontents
+==================================*/
+.coverbtn__group {
+	width: 100%;
+	background-color: #fff; 
+}
+
+/*:: search :::::::::::::::::::::::*/
+.search__tit {
+	background-color: #FFFFEA;
+	font-size: 13px;
+	line-height: 25px;
+	padding: 5px 10px;
+	margin: 0 0 0 20px;
+	border-right: 1px dashed #999999;
+	border-bottom: 2px solid #FFCD4A;
+	padding-right: 15px;
+	float: left; 
+}
+  .search__tit i {
+		vertical-align: middle; 
+}
+
+.search__pulldown {
+	height: 35px; 
+}
+
+.search__pulldown ul {
+	margin: 0;
+	padding: 0; 
+}
+
+.search__pulldown ul li {
+	list-style: none;
+	border-right: 1px dashed #999999;
+	border-bottom: 2px solid #FFCD4A;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	float: left;
+	position: relative;
+	width: 180px;
+  /*親メニューの幅*/
+	height: 35px;
+  /*親メニューの高さ*/
+	line-height: 35px;
+	background: #FFFFEA;
+  /*親メニューの背景色*/
+	color: #0E0A32;
+  /*親メニューの文字色*/
+	text-align: center;
+	font-weight: bold; 
+}
+
+.search__pulldown ul li a {
+	color: #0E0A32;
+	display: block;
+	text-decoration: none; 
+}
+
+.search__pulldown ul li:hover ,
+.search__pulldown ul li a:hover {
+	background: #E6503B;
+  /*ホバー時の親メニューの背景色*/
+	color: #fff;
+  /*ホバー時の親メニューの文字色*/ 
+}
+
+.search__pulldown ul li ul {
+	position: absolute;
+	top: 35px;
+  /*親メニューの高さと同じにする*/
+	width: 180px;
+	z-index: 100; 
+}
+
+.search__pulldown ul li ul li {
+	visibility: hidden;
+	overflow: hidden;
+	width: 180px;
+  /*サブメニューの幅*/
+	height: 0;
+	background: #FFFFEA;
+  /*サブメニューの背景色*/
+	border-bottom: 1px solid #FFCD4A; 
+}
+
+.search__pulldown ul li ul li:hover ,
+.search__pulldown ul li ul li a:hover {
+	background: #FFCD4A;
+  /*ホバー時のサブメニューの背景色*/ 
+}
+
+.search__pulldown ul li:hover ul li ,
+.search__pulldown ul li a:hover ul li {
+	visibility: visible;
+	overflow: visible;
+	height: 35px;
+  /*サブメニューの高さ*/
+	z-index: 10; 
+}
+
+.search__pulldown * {
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s; 
+}
+
+/*:: coverList :::::::::::::::::::::::*/
+#Container .mix {
+	display: none; 
+}
+
+.coverList__box {
+	border-bottom: 1px dashed #999;
+	width: 210px;
+	float: left;
+	margin: 10px 20px 10px 20px;
+	padding-bottom: 20px; 
+}
+
+.coverList__box__item img {
+	width: 100%;
+	height: auto; 
+}
+
+.coverList__box__tit {
+	font-size: 13px;
+	margin-bottom: 10px; 
+}
+
+.number {
+	font-size: 24px;
+	font-weight: bold;
+	float: left;
+	line-height: 26px;
+	margin-right: 5px; 
+}
+  .number span {
+		font-size: 10px;
+		font-weight: normal;
+		display: block;
+		line-height: 11px; 
+}
+
+.newIcon {
+	background-color: #FFCD4A;
+	border-radius: 3px;
+	float: left;
+	padding: 3px 6px;
+	text-align: center; 
+}
+
+.date {
+	float: right; 
+}
+
+.coverList__box__btn {
+	text-align: center;
+	border: 2px solid #999;
+	border-radius: 5px;
+	background-color: #fff; 
+}
+  .coverList__box__btn i {
+		vertical-align: middle; 
+}
+  .coverList__box__btn a:link {
+		display: block;
+		padding: 5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		text-decoration: none; 
+}
+  .coverList__box__btn a:visited {
+		display: block;
+		padding: 5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		text-decoration: none; 
+}
+  .coverList__box__btn a:hover {
+		display: block;
+		background-color: #B9DA7C;
+		color: #fff;
+		padding: 5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		text-decoration: none; 
+}
+
+.coverList__box__btn--green {
+	border-color: #B9DA7C; 
+}
+
+.coverlist__box__checkbtn {
+	float: left; 
+}
+  .coverlist__box__checkbtn input[type='checkbox'] {
+		cursor: pointer; 
+}
+
+.groupBtn {
+	float: left;
+	padding: 5px 10px;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 2px solid #FFCD4A; 
+}
+  .groupBtn i {
+		vertical-align: middle; 
+}
+
+label {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none; 
+}
+
+input[type=checkbox].css-checkbox {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0; 
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -15px; 
+}
+
+.vlad {
+	background-image: url(common/images/vlad.png); 
+}
+
+input[type=checkbox].css-checkbox.lrg + label.css-label.lrg {
+	padding-left: 22px;
+	height: 20px;
+	display: inline-block;
+	line-height: 20px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 15px;
+	vertical-align: middle;
+	cursor: pointer; 
+}
+
+input[type=checkbox].css-checkbox.lrg:checked + label.css-label.lrg {
+	background-position: 0 -20px; 
+}
+
+/*==================================
+footer
+==================================*/
+.footer {
+	background-color: #E5E4C7;
+	padding: 10px 0;
+	min-width: 1300px; 
+}
+
+.bLogo {
+	font-size: 18px;
+	font-weight: bold; 
+}
+
+.footMenu ul li {
+	font-size: 13px;
+	float: left;
+	list-style: none;
+	margin-right: 10px; 
+}
+
+.btmPr--sp {
+	display: none; 
+}
+
+.copyright {
+	font-size: 10px;
+	float: right; 
+}
