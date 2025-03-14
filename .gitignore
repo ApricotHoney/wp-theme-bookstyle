@@ -20,11 +20,12 @@
 # Configuration
 wp-config.php
 
-# Example themes
-/wp-content/themes/twenty*/
+# themes
+./themes/twenty*/
+./themes/index.php
 
-# Example plugin
-/wp-content/plugins/hello.php
+# plugin
+./plugins
 
 # Uploads
 /wp-content/uploads/

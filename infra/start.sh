@@ -21,6 +21,8 @@ done
 
 # データベースのリストア
 echo "データベースをリストアしています..."
+# SQLモードを一時的に緩和してインポートを行う
+docker exec -i wp_db mysql -uwordpress -pwordpress -e "SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';" wordpress
 cat ../database.sql | docker exec -i wp_db mysql -uwordpress -pwordpress wordpress
 
 echo "----------------------------------------"
