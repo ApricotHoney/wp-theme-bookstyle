@@ -3,7 +3,7 @@
 Template Name: link_template
 */
 ?>
-<?php remove_filter('the_content', 'wpautop'); ?>
+<?php $removed = remove_filter('the_content', 'wpautop'); ?>
 <?php get_header(); ?>
 <!-- ============================================== -->
 <!--            maincontents                        -->
@@ -22,9 +22,9 @@ Template Name: link_template
 </ul>
 <p>バナーは右クリックでダウンロードしてお持ち帰りください。<br>
 <span class="fz-s">※直リンクはサーバーに負担がかかりますのでお止めください。</span></p>
-<p>31×31 <img src="<?php bloginfo('template_directory');?>/common/images/link/bs_banner3b.gif" alt=""> <img src="<?php bloginfo('template_directory');?>/common/images/link/bs_banner3g.gif" alt=""> <img src="<?php bloginfo('template_directory');?>/common/images/link/bs_banner3o.gif" alt=""> <img src="<?php bloginfo('template_directory');?>/common/images/link/bs_banner3p.gif" alt=""></p>
-<p>88×31 <img src="<?php bloginfo('template_directory');?>/common/images/link/bs_banner2.gif" alt=""></p>
-<p>200×40 <img src="<?php bloginfo('template_directory');?>/common/images/link/bs_banner1.gif" alt=""></p>
+<p>31×31 <img src="<?php echo get_template_directory_uri(); ?>/common/images/link/bs_banner3b.gif" alt=""> <img src="<?php echo get_template_directory_uri(); ?>/common/images/link/bs_banner3g.gif" alt=""> <img src="<?php echo get_template_directory_uri(); ?>/common/images/link/bs_banner3o.gif" alt=""> <img src="<?php echo get_template_directory_uri(); ?>/common/images/link/bs_banner3p.gif" alt=""></p>
+<p>88×31 <img src="<?php echo get_template_directory_uri(); ?>/common/images/link/bs_banner2.gif" alt=""></p>
+<p>200×40 <img src="<?php echo get_template_directory_uri(); ?>/common/images/link/bs_banner1.gif" alt=""></p>
 
 <h2 class="h2 mt40">リンク集</h2>
 <h3 class="h3"><i class="icon-menu07"> </i>参考・お世話になったサイト様</h3>
@@ -54,7 +54,7 @@ Template Name: link_template
 				echo '<div class="newIcon--second">New!</div>';
 				}
 				?>
-				<a href="<?php the_content(); ?>" target="_blalnk"><?php the_title(); ?></a>
+				<a href="<?php echo esc_url(get_the_content()); ?>" target="_blank"><?php the_title(); ?></a>
 			</li>
 		<?php endwhile; endif; ?>
 </ul>

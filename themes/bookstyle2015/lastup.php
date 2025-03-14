@@ -3,7 +3,7 @@
 Template Name: lastup_template
 */
 ?>
-<?php remove_filter('the_content', 'wpautop'); ?>
+<?php $removed = remove_filter('the_content', 'wpautop'); ?>
 <?php get_header(); ?>
 <!-- ============================================== -->
 <!--            maincontents                        -->

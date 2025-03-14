@@ -26,7 +26,7 @@
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 		</div><!-- .btmPrsp -->
-		<div class="pageTop ta-c mt15 mb15"><a href="#pageTop"><img src="<?php bloginfo('template_directory'); ?>/common/images/btn_pagetop.png" alt="ページトップへ戻る"></a></div>
+		<div class="pageTop ta-c mt15 mb15"><a href="#pageTop"><img src="<?php echo get_template_directory_uri(); ?>/common/images/btn_pagetop.png" alt="ページトップへ戻る"></a></div>
 	</section>
 <div class="footer">
 	<section>
@@ -34,7 +34,7 @@
 		<div class="footMenu mt05 fl-l">
 			<?php wp_nav_menu(array('theme_location' => 'footMenu')); ?>
 		</div><!-- .footMenu -->
-		<div class="copyright mt10">copyright©BookStyleAllRightsReserved.</div>
+		<div class="copyright mt10">copyrightBookStyleAllRightsReserved.</div>
 	</section>
 </div>
 </footer>
@@ -47,9 +47,9 @@
 	<div class="sb-close"><a href="#">閉じる</a></div>
 	<?php wp_nav_menu(array('theme_location' => 'spMenu')); ?>
 	<div class="snsIcon">
-		<div class="snsIcon__item"><a href="https://twitter.com/book_style_neri" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/common/images/icon_twitter.gif" alt="Twitter"></a></div>
-		<div class="snsIcon__item"><a href="http://neri-bookstyle.tumblr.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/common/images/icon_tumbler.gif" alt="Tumblr"></a></div>
-		<div class="snsIcon__item"><a href="https://instagram.com/neri_bookstyle/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/common/images/icon_instgram.gif" alt="Instgram"></a></div>
+		<div class="snsIcon__item"><a href="https://twitter.com/book_style_neri" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/common/images/icon_twitter.gif" alt="Twitter"></a></div>
+		<div class="snsIcon__item"><a href="http://neri-bookstyle.tumblr.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/common/images/icon_tumbler.gif" alt="Tumblr"></a></div>
+		<div class="snsIcon__item"><a href="https://instagram.com/neri_bookstyle/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/common/images/icon_instgram.gif" alt="Instgram"></a></div>
 	</div>
 </div>
 <!-- ===============▲スマホnaviここまで▲=================== -->
