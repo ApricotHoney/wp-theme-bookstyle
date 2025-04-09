@@ -128,18 +128,18 @@ function my_custom_init() {
 }
 //タクソノミー名からリンクをカットする
 function get_the_term_list_nolink( $id = 0, $taxonomy, $before = '', $sep = '', $after = '' ) {
- $terms = get_the_terms( $id, $taxonomy ); 
- 
- if ( is_wp_error( $terms ) )
- return $terms;
- 
- if ( empty( $terms ) )
- return false;
- 
- foreach ( $terms as $term ) {
- $term_names[] = $term->name ;
- }
- 
- return $before . join( $sep, $term_names ) . $after;
+  $terms = get_the_terms( $id, $taxonomy ); 
+  
+  if ( is_wp_error( $terms ) )
+  return $terms;
+  
+  if ( empty( $terms ) )
+  return false;
+  
+  foreach ( $terms as $term ) {
+  $term_names[] = $term->name ;
+  }
+  
+  return $before . join( $sep, $term_names ) . $after;
 }
 ?>
