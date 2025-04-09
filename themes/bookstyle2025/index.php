@@ -79,7 +79,7 @@
 				<a href="<?php echo esc_url(wp_get_attachment_url(get_post_thumbnail_id())); ?>" rel="lightbox[bookcover]"><?php the_post_thumbnail('bookcover-thumbnail'); ?></a>
 			</div>
 			<div class="coverList__box__btn coverList__box__btn--green mt05">
-				<a href="http://bookstyle.xyz/cover/BC_<?php the_title(); ?>.zip" onclick="ga('send', 'event', 'bc_count', 'downlode', 'BC_<?php the_title(); ?>');"><i class="icon-dl"> </i>ダウンロード</a>
+				<a href="https://bookstyle.xyz/cover/BC_<?php the_title(); ?>.zip" onclick="ga('send', 'event', 'bc_count', 'downlode', 'BC_<?php the_title(); ?>');"><i class="icon-dl"> </i>ダウンロード</a>
 			</div>
 		</div><!-- .coverList__item -->
 		<?php endwhile; endif; ?>
