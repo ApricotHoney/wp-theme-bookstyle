@@ -1,36 +1,46 @@
 #!/bin/bash
 
-# WordPressのDocker環境を起動するスクリプト
-cd "$(dirname "$0")"
-echo "Docker環境を起動しています..."
-docker-compose up -d
+# エラーハンドリング: エラーが発生したら停止
+set -e
 
-# MySQLが準備完了するまで待機
-echo "データベースの準備が完了するまで待機しています..."
-until docker exec wp_db mysqladmin ping -h localhost -u wordpress -pwordpress --silent; do
-    echo "データベースの起動を待機中..."
-    sleep 3
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd "$DIR"
+
+echo "=== Bookstyle V4 Docker Environment Setup ==="
+
+# Check for incompatible phpmyadmin image and remove it
+if docker images --format "{{.Repository}}:{{.Tag}}" | grep -q "phpmyadmin/phpmyadmin:latest"; then
+    echo "Checking for potentially incompatible phpmyadmin image..."
+    # 簡易チェック: inspectでArchitectureを確認しようとすると複雑になるため、
+    # ユーザーが困っているので安全側倒してlatestがあれば消す、または特定バージョンを使う方針にする。
+    # ここでは、docker-composeでバージョン固定をしたので、古いlatestが邪魔しないように念のため警告または削除を試みる。
+    echo "Removing potentially incompatible 'latest' image if present..."
+    docker rmi phpmyadmin/phpmyadmin:latest 2>/dev/null || true
+fi
+
+echo "Starting Docker containers..."
+# --build をつけて変更を確実に反映
+docker-compose up -d --build
+
+# DBのヘルスチェック待機
+echo "Waiting for Database to be ready..."
+until docker exec bookstyle_db mysqladmin ping -h localhost -u wordpress -pwordpress --silent > /dev/null 2>&1; do
+    echo -n "."
+    sleep 2
 done
+echo " Database is ready!"
 
-# WordPressが準備完了するまで待機
-echo "WordPressの準備が完了するまで待機しています..."
-until $(curl --output /dev/null --silent --head --fail http://localhost:8080); do
-    echo "WordPressの起動を待機中..."
-    sleep 3
+echo "Waiting for WordPress..."
+# HTTPステータス確認 (200, 301, 302あたりが返ればOK)
+until curl -s -o /dev/null -w "%{http_code}" http://localhost:8000 | grep -qE "200|301|302"; do
+    echo -n "."
+    sleep 2
 done
+echo " WordPress is ready!"
 
-# データベースのリストア
-echo "データベースをリストアしています..."
-# SQLモードを一時的に緩和してインポートを行う
-docker exec -i wp_db mysql -uwordpress -pwordpress -e "SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';" wordpress
-cat ../database.sql | docker exec -i wp_db mysql -uwordpress -pwordpress wordpress
-
-echo "----------------------------------------"
-echo "WordPress環境が起動しました！"
-echo "フロントエンド: http://localhost:8080"
-echo "管理画面: http://localhost:8080/wp-admin/"
-echo ""
-echo "管理者ログイン情報:"
-echo "ユーザー名: admin（データベースから復元された場合は異なる可能性があります）"
-echo "パスワード: データベースから復元された情報をご利用ください"
-echo "----------------------------------------"
+echo "========================================"
+echo "Access Information:"
+echo "WordPress:  http://localhost:8000"
+echo "phpMyAdmin: http://localhost:8080"
+echo "========================================"
+echo "To stop: cd v4/infra && docker-compose down"
