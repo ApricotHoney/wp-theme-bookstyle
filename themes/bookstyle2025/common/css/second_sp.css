@@ -1,0 +1,195 @@
+@charset "UTF-8";
+/*==================================
+clear
+==================================*/
+.l_wrap--second ,
+ul.linkList ,
+ul.gallery ,
+ul.gallery__tagbox {
+	overflow: hidden;
+	*zoom: 1; 
+}
+
+/*==================================
+layout
+==================================*/
+.l_wrap--second {
+	width: 96%;
+	margin: 0 2%; 
+}
+
+/*==================================
+Header
+==================================*/
+.pageTitle h1 {
+	font-size: 50px;
+	font-weight: bold;
+	line-height: 63px;
+	margin-top: 20px; 
+}
+  .pageTitle h1 span {
+		font-size: 11px;
+		font-weight: normal;
+		display: block;
+		line-height: 11px; 
+}
+
+/*==================================
+Title
+==================================*/
+h2.h2 {
+	background: url("../images/line_h1_bg.gif") repeat-x center bottom;
+	color: #6AACB8;
+	font-size: 22px;
+	font-weight: bold;
+	margin: 10px 0 15px 0;
+	padding-bottom: 20px;
+	position: relative; 
+}
+
+h3.h3 {
+	background-image: url("../images/icon/menu03.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 18px;
+	line-height: 25px;
+	color: #0E0A32;
+	margin: 20px 0 10px 0;
+	padding-left: 30px; 
+}
+
+/*:: リスト :::::::::::::::::::::::*/
+ul.list li {
+	background: url(../images/icon/listIcon.png) no-repeat 0 6px;
+	padding-left: 1em; 
+}
+
+ul.linkList li {
+	float: left;
+	font-size: 14px;
+	line-height: 24px;
+	list-style: outside none none;
+	margin-right: 2%;
+	width: 46%; 
+}
+
+ul.gallery > li {
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+	list-style: none;
+	margin: 0 2% 20px 2%; 
+}
+  ul.gallery > li:nth-child(n+3) {
+		border-top: 1px dashed #999; 
+}
+  ul.gallery > li p {
+		margin: 0; 
+}
+  ul.gallery > li .gallery__photo img {
+		width: 100%;
+		height: auto; 
+}
+  ul.gallery > li p.gallery__date ,
+  ul.gallery > li p.gallery__client {
+		font-size: 0.8em;
+		color: #999; 
+}
+  ul.gallery > li p.gallery__content {
+		font-size: 1em;
+		font-weight: bold; 
+}
+    ul.gallery > li p.gallery__content img {
+			width: 100%;
+			height: auto; 
+}
+  ul.gallery > li ul.gallery__tagbox li {
+		background-color: #6AACB8;
+		border: 1px solid #6AACB8;
+		border-radius: 5px;
+		color: #fff;
+		float: left;
+		font-size: 0.8em;
+		list-style: none;
+		margin-right: 5px;
+		margin-bottom: 5px;
+		text-decoration: none;
+		padding: 0px 4px; 
+}
+    ul.gallery > li ul.gallery__tagbox li:last-child {
+			margin-right: 0; 
+}
+
+ul.workList {
+	margin-bottom: 15px; 
+}
+
+ul.workList li {
+	padding: 5px 0;
+	border-bottom: 1px dashed #A5A5A5; 
+}
+  ul.workList li .workList__cont {
+		color: #595959; 
+}
+
+ul.workList li:first-child {
+	padding-top: 0; 
+}
+
+.newIcon--second {
+	background-color: #ffcd4a;
+	border-radius: 3px;
+	float: left;
+	font-size: 0.8em;
+	margin-right: 5px;
+	padding: 0 6px;
+	text-align: center; 
+}
+
+/*:: 新窓アイコン :::::::::::::::::::::::*/
+a.newWindow:after {
+	content: url(../images/windowopen.png);
+	margin: 0 0 0 6px;
+	position: relative;
+	top: 1px; 
+}
+
+/*:: Lust UP :::::::::::::::::::::::*/
+.lustUp--second {
+	margin-bottom: 20px; 
+}
+  .lustUp--second dl dt {
+		clear: both;
+		float: left;
+		font-size: 14px;
+		line-height: 22px;
+		width: 100px; 
+}
+  .lustUp--second dl dd {
+		font-size: 14px;
+		line-height: 23px;
+		margin: 0 0 3px 0;
+		padding-left: 100px;
+		padding-bottom: 3px;
+		border-bottom: 1px dashed #A5A5A5; 
+}
+
+/*:: Mail form :::::::::::::::::::::::*/
+input[type="text"] ,
+input[type="email"] ,
+input[type="url"] ,
+textarea {
+	width: 95%; 
+}
+
+input[type="text"] ,
+input[type="email"] ,
+input[type="url"] {
+	padding: 5px 0; 
+}
+
+input.wpcf7-form-control.wpcf7-submit {
+	width: 100%;
+	font-size: 1.2em;
+	padding: 5px 0; 
+}

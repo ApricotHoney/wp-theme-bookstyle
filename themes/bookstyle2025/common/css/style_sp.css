@@ -1,0 +1,378 @@
+@charset "UTF-8";
+/*==================================
+clear
+==================================*/
+section ,
+.snsIcon ,
+.gMenu ul ,
+.coverList ,
+.footer ,
+.spNavi {
+	overflow: hidden;
+	*zoom: 1; 
+}
+
+/*==================================
+layout
+==================================*/
+.sidePr {
+	display: none; 
+}
+
+section {
+	margin: 0 auto;
+	padding: 0;
+	width: 100%; 
+}
+
+/*==================================
+module
+==================================*/
+a.more {
+	font-size: 13px;
+	line-height: 20px;
+	margin: 0;
+	padding-left: 190px; 
+}
+  a.more i {
+		vertical-align: middle; 
+}
+  a.more:link {
+		color: #000;
+		text-decoration: none; 
+}
+  a.more:visited {
+		color: #000;
+		text-decoration: none; 
+}
+  a.more:hover {
+		color: #000;
+		text-decoration: underline;
+		font-weight: normal; 
+}
+
+/*==================================
+Header
+==================================*/
+.header {
+	display: none; 
+}
+  .header .head__Gmenu {
+		display: none; 
+}
+
+/*:: globalMenu :::::::::::::::::::::::*/
+.header--change .gMenu {
+	margin: 5px 0 0 20px;
+	float: left; 
+}
+  .header--change .gMenu ul li {
+		float: left;
+		list-style: none;
+		line-height: 20px;
+		margin-right: 30px; 
+}
+    .header--change .gMenu ul li i {
+			display: none; 
+}
+    .header--change .gMenu ul li:last-child {
+			margin-right: 0; 
+}
+    .header--change .gMenu ul li a:link {
+			font-size: 14px;
+			font-weight: bold;
+			text-decoration: none; 
+}
+    .header--change .gMenu ul li a:visited {
+			font-size: 14px;
+			font-weight: bold;
+			text-decoration: none; 
+}
+
+/*:: スマホ版メニュー :::::::::::::::::::::::*/
+.spNavi {
+	background-color: #6AACB8;
+	padding: 7px 7px 0 7px; 
+}
+  .spNavi .spNavi_logo {
+		font-size: 14px;
+		color: #fff;
+		font-weight: bold;
+		float: left; 
+}
+  .spNavi .spNavi_menu {
+		float: right; 
+}
+
+.sb-slidebar {
+	background-color: #FFFFEA;
+	border-left: 10px solid #FFCD4A; 
+}
+  .sb-slidebar .sb-close {
+		width: 80%;
+		background-color: #E5E4C7;
+		margin: 15px 10% 0 10%;
+		padding: 10px 0;
+		text-align: center;
+		font-size: 16px;
+		font-weight: bold; 
+}
+    .sb-slidebar .sb-close a {
+			text-decoration: none; 
+}
+  .sb-slidebar ul {
+		padding: 15px 0 0 15px; 
+}
+    .sb-slidebar ul li {
+			border-bottom: 1px solid #999;
+			list-style: none;
+			margin-bottom: 10px;
+			padding-bottom: 10px; 
+}
+      .sb-slidebar ul li a {
+				display: block;
+				text-decoration: none; 
+}
+
+.snsIcon {
+	padding-top: 20px;
+	margin-left: 15px; 
+}
+  .snsIcon__item {
+		float: left;
+		margin-right: 10px; 
+}
+
+/*==================================
+maincontents
+==================================*/
+.coverbtn__group {
+	width: 100%;
+	background-color: #fff; 
+}
+
+.coverlist__box__checkbtn {
+	display: none; 
+}
+
+/*:: search :::::::::::::::::::::::*/
+.search__tit {
+	background-color: #FFFFEA;
+	font-size: 13px;
+	line-height: 25px;
+	padding: 5px 10px;
+	margin: 0;
+	border-bottom: 1px solid #999;
+	padding-right: 15px; 
+}
+  .search__tit i {
+		vertical-align: middle; 
+}
+
+.search__pulldown {
+	height: 35px; 
+}
+
+.search__pulldown ul {
+	margin: 0;
+	padding: 0; 
+}
+
+.search__pulldown ul li {
+	list-style: none;
+	border-right: 1px dashed #999999;
+	border-bottom: 2px solid #FFCD4A;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	float: left;
+	position: relative;
+	width: 50%;
+  /*親メニューの幅*/
+	height: 35px;
+  /*親メニューの高さ*/
+	line-height: 35px;
+	background: #FFFFEA;
+  /*親メニューの背景色*/
+	color: #0E0A32;
+  /*親メニューの文字色*/
+	text-align: center;
+	font-weight: bold; 
+}
+
+.search__pulldown ul li a {
+	color: #0E0A32;
+	display: block;
+	text-decoration: none; 
+}
+
+.search__pulldown ul li:hover ,
+.search__pulldown ul li a:hover {
+	background: #E6503B;
+  /*ホバー時の親メニューの背景色*/
+	color: #fff;
+  /*ホバー時の親メニューの文字色*/ 
+}
+
+.search__pulldown ul li ul {
+	position: absolute;
+	top: 35px;
+  /*親メニューの高さと同じにする*/
+	width: 100%;
+	z-index: 100; 
+}
+
+.search__pulldown ul li ul li {
+	visibility: hidden;
+	overflow: hidden;
+	width: 100%;
+  /*サブメニューの幅*/
+	height: 0;
+	background: #FFFFEA;
+  /*サブメニューの背景色*/
+	border-bottom: 1px solid #FFCD4A; 
+}
+
+.search__pulldown ul li ul li:hover ,
+.search__pulldown ul li ul li a:hover {
+	background: #FFCD4A;
+  /*ホバー時のサブメニューの背景色*/ 
+}
+
+.search__pulldown ul li:hover ul li ,
+.search__pulldown ul li a:hover ul li {
+	visibility: visible;
+	overflow: visible;
+	height: 35px;
+  /*サブメニューの高さ*/
+	z-index: 10; 
+}
+
+.search__pulldown * {
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s; 
+}
+
+.groupBtn {
+	display: none; 
+}
+
+/*:: coverList :::::::::::::::::::::::*/
+#Container .mix {
+	display: none; 
+}
+
+.coverList__box {
+	border-bottom: 1px dashed #999;
+	width: 46%;
+	float: left;
+	margin: 10px 2% 10px 5px; 
+}
+
+.coverList__box__tit {
+	font-size: 12px;
+	margin-bottom: 10px; 
+}
+
+.coverList__box__item img {
+	width: 100%;
+	height: auto; 
+}
+
+.number {
+	font-size: 18px;
+	font-weight: bold;
+	float: left;
+	line-height: 20px;
+	margin-right: 5px; 
+}
+  .number span {
+		font-size: 10px;
+		font-weight: normal;
+		display: block;
+		line-height: 11px; 
+}
+
+.newIcon {
+	background-color: #FFCD4A;
+	border-radius: 3px;
+	float: left;
+	padding: 3px 3px;
+	text-align: center; 
+}
+
+.date {
+	float: right; 
+}
+
+.coverList__box__btn {
+	border: 2px solid #999;
+	background-color: #fff;
+	text-align: center;
+	margin-bottom: 10px; 
+}
+  .coverList__box__btn i {
+		vertical-align: middle; 
+}
+  .coverList__box__btn a:link {
+		display: block;
+		padding: 5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		text-decoration: none; 
+}
+  .coverList__box__btn a:visited {
+		display: block;
+		padding: 5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		text-decoration: none; 
+}
+  .coverList__box__btn a:hover {
+		display: block;
+		background-color: #B9DA7C;
+		color: #fff;
+		padding: 5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		text-decoration: none; 
+}
+
+.coverList__box__btn--green {
+	border-color: #B9DA7C; 
+}
+
+/*==================================
+footer
+==================================*/
+.footer {
+	background-color: #E5E4C7;
+	padding: 10px 0; 
+}
+
+.bLogo {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center; 
+}
+
+.footMenu {
+	display: none; 
+}
+
+.btmPr {
+	display: none; 
+}
+
+.btmPr--sp img {
+	width: 100%; 
+}
+
+.copyright {
+	font-size: 10px;
+	text-align: center; 
+}

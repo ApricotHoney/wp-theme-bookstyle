@@ -56,3 +56,4 @@ database.sql
 
 # Docker environment
 infra/.env
+infra/.envbackup/*.wpress
