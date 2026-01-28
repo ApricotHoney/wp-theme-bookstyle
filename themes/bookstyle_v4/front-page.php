@@ -17,7 +17,7 @@
             );
             $the_query = new WP_Query($args);
             
-            $posts_per_shelf = 5; // Adjust based on design
+            $posts_per_shelf = 6; // Adjust based on design
             $count = 0;
             
             if ( $the_query->have_posts() ) : 

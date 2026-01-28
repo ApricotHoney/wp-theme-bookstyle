@@ -115,8 +115,13 @@ img {
 }
 
 /* Navigation */
+.gMenu-list{
+    display: flex;
+    flex-wrap: wrap;
+}
 .gMenu-list li {
     margin-bottom: 15px;
+    width: 50%;
 }
 
 .gMenu-list li a {
@@ -194,7 +199,7 @@ img {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 27px;
     position: relative;
     min-height: 280px;
     /* Ensure height for background */
@@ -224,6 +229,10 @@ img {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     display: block;
     margin: 0 auto;
+    width: 148px;
+    height: 200px;
+    object-fit: cover;
+    object-position: 100% 100%;
 }
 
 /* Footer */
