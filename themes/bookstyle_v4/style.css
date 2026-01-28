@@ -237,17 +237,20 @@ img {
     text-align: center;
     position: relative;
     z-index: 500;
-    /* Full width */
-    width: calc(100% - var(--sidebar-width));
-    margin-left: var(--sidebar-width);
+    /* Full width to overlay sidebar */
+    width: 100%;
+    margin-left: 0;
 }
 
 .footer .cat-image {
     position: absolute;
     left: 40px;
-    top: -50px;
+    top: -40px;
+    /* Slight adjustment to sit better on the line */
     /* Sitting on top */
     width: 100px;
+    z-index: 501;
+    /* Ensure above footer content if needed */
 }
 
 /* Modal Styles */
@@ -343,4 +346,343 @@ img {
 
 .btn-blue {
     background: #00BFFF;
+}
+
+/* ==========================================================================
+   Works & Gallery Styles (Ported from bookstyle2025)
+   ========================================================================== */
+
+/* Title Styles */
+h2.h2 {
+    background: url("images/line_h1_bg.gif") repeat-x center bottom;
+    /* Need to ensure image exists or path is correct */
+    color: #6AACB8;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 10px 0 25px 0;
+    padding-bottom: 30px;
+    position: relative;
+    border-bottom: none;
+    /* Override any defaults */
+}
+
+h2.h2::after {
+    bottom: -38px;
+    content: url("images/line_h1_01.gif");
+    /* Need to ensure image exists or path is correct */
+    left: 0;
+    padding-bottom: 38px;
+    position: absolute;
+}
+
+h3.h3 {
+    background-image: url("images/icon-s22da8f8f13.png");
+    /* Need to ensure image exists or path is correct */
+    background-repeat: no-repeat;
+    background-position: 0 -133px;
+    height: 27px;
+    color: #0E0A32;
+    margin: 20px 0 10px 0;
+    padding-left: 30px;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+/* Works List */
+ul.workList {
+    margin-bottom: 20px;
+}
+
+ul.workList li {
+    padding: 15px 0;
+    border-bottom: 1px dashed #A5A5A5;
+    list-style: none;
+}
+
+ul.workList li:first-child {
+    padding-top: 0;
+}
+
+.workList__tit {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.workList__cont {
+    color: #595959;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.newIcon--second {
+    background-color: #ffcd4a;
+    border-radius: 3px;
+    float: left;
+    font-size: 0.8em;
+    margin-right: 5px;
+    padding: 0 6px;
+    text-align: center;
+    color: #333;
+}
+
+/* Gallery Grid */
+ul.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+ul.gallery>li {
+    width: calc(33.333% - 14px);
+    /* 3 column layout approx */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+ul.gallery>li p {
+    margin: 0 0 10px 0;
+}
+
+ul.gallery .gallery__date {
+    font-size: 0.8em;
+    color: #999;
+    text-align: right;
+}
+
+ul.gallery .gallery__photo {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+ul.gallery .gallery__photo img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+}
+
+ul.gallery__tagbox {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+ul.gallery__tagbox li {
+    float: left;
+    list-style: none;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: #6AACB8;
+    border: 1px solid #6AACB8;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 6px;
+}
+
+.gallery__client {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.gallery__content {
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* Adjustments for responsive */
+@media screen and (max-width: 768px) {
+    ul.gallery>li {
+        width: calc(50% - 10px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    ul.gallery>li {
+        width: 100%;
+    }
+}
+
+/* Page Content Container - Refined for paper/sheet look */
+.content-container {
+    background: #fff;
+    padding: 60px;
+    /* border-radius: 0;  Sharp edges like paper */
+    margin: 20px auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+    max-width: 1000px;
+    /* Constrain width for readability */
+}
+
+/* Sidebar Color Dots */
+.color-dot {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.color-black {
+    background-color: #000;
+}
+
+.color-blue {
+    background-color: #00BFFF;
+}
+
+.color-orange {
+    background-color: #FFA500;
+}
+
+.color-green {
+    background-color: #32CD32;
+}
+
+.color-white {
+    background-color: #fff;
+}
+
+.color-red {
+    background-color: #FF4500;
+}
+
+/* ==========================================================================
+   Unified Page Styles (About, Works, Gallery, HowTo)
+   ========================================================================== */
+
+/* Header Area */
+.unified-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.unified-title-en {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+    color: #333;
+}
+
+.unified-title-jp {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Intro Section (Flex Layout) */
+.unified-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.unified-intro-text {
+    flex: 1;
+}
+
+.unified-intro-image {
+    width: 400px;
+    /* Adjust based on image aspect ratio */
+    flex-shrink: 0;
+}
+
+.unified-intro-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.unified-lead {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+/* Pink Marker Highlighter */
+.marker {
+    background: linear-gradient(transparent 70%, #ffdddd 70%);
+    /* Light pink marker */
+    font-weight: bold;
+}
+
+/* Section Titles with Pink Icon (H3) */
+.icon-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+    color: #333;
+    background: none;
+    /* Override previous h3 styles if needed */
+}
+
+.icon-heading::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    /* Adjust alignment */
+    width: 15px;
+    height: 15px;
+    background-color: #ff9999;
+    /* Pink circle */
+    border-radius: 50%;
+}
+
+/* Styled H2 (Center with marker underline) */
+h2.unified-h2 {
+    text-align: center;
+    background: none;
+    /* Remove default h2 line bg */
+    border: none;
+    font-size: 32px;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    display: inline-block;
+    position: relative;
+    background: linear-gradient(transparent 70%, #ffdddd 70%);
+    width: auto;
+    padding: 0 10px;
+    display: table;
+    /* Center centering */
+    margin: 0 auto 20px auto;
+}
+
+h2.unified-h2::after {
+    display: none;
+    /* Remove default h2 line */
+}
+
+/* Section spacing */
+.unified-section {
+    margin-bottom: 60px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .unified-intro {
+        flex-direction: column-reverse;
+    }
+
+    .unified-intro-image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .unified-intro-text {
+        width: 100%;
+    }
 }

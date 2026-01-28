@@ -51,6 +51,19 @@
                 <select style="width:100%; padding:5px; margin-bottom:5px;"><option>ジャンルでさがす</option></select>
                 <select style="width:100%; padding:5px;"><option>並び替え</option></select>
              </div>
+             
+             <!-- Color Search -->
+             <div class="sidebar-color-search" style="margin-top: 15px;">
+                <span class="search-label" style="font-size: 13px; margin-bottom: 5px;">色でさがす</span>
+                <div class="color-dots" style="display: flex; gap: 5px;">
+                    <a href="#" class="color-dot color-black" title="Black"></a>
+                    <a href="#" class="color-dot color-blue" title="Blue"></a>
+                    <a href="#" class="color-dot color-orange" title="Orange"></a>
+                    <a href="#" class="color-dot color-green" title="Green"></a>
+                    <a href="#" class="color-dot color-white" title="White"></a>
+                    <a href="#" class="color-dot color-red" title="Red"></a>
+                </div>
+             </div>
         </div>
 
         <div class="sidebar-social">
