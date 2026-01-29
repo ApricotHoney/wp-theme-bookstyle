@@ -27,7 +27,7 @@ body {
     padding: 0;
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     /* Unify background on body */
-    background: #fcfcfc url('images/bg_common.jpg') no-repeat center center fixed;
+    background: #fcfcfc url('images/bg_common.jpg') no-repeat 0 0 fixed;
     background-size: cover;
     color: var(--text-color);
     height: 100%;
@@ -50,9 +50,9 @@ a {
     transition: opacity 0.3s;
 }
 
-a:hover {
+/* a:hover {
     opacity: 0.7;
-}
+} */
 
 img {
     max-width: 100%;
@@ -89,6 +89,7 @@ img {
 }
 
 .sidebar-logo {
+    margin-top: 30px;
     margin-bottom: 40px;
     text-align: center;
 }
@@ -192,7 +193,7 @@ img {
     background-position: bottom left;
     /* Align shelf to bottom */
     /* Remove fake CSS border/shadow as image has it */
-    padding: 60px 40px 35px;
+    padding: 57px 40px 0px 42px;
     /* Top padding for space, Bottom padding to push books up from shelf edge */
     margin-bottom: 0;
     /* Remove gap between shelves */
@@ -223,16 +224,19 @@ img {
 
 .cover-item:hover {
     transform: translateY(-5px);
+    opacity: 1;
 }
 
 .cover-image img {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+    box-shadow: 20px 0px 27px 1px rgba(0, 0, 0, 0.23);
     display: block;
     margin: 0 auto;
-    width: 148px;
+    width: 145px;
     height: 200px;
     object-fit: cover;
     object-position: 100% 100%;
+    border-radius: 5px 0px 0px 3px;
 }
 
 /* Footer */
