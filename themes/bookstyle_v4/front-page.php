@@ -7,7 +7,7 @@
 
 
         <div id="cover-grid" class="cover-grid">
-        <div id="cover-grid" class="cover-grid">
+
             <?php
             // Custom logic to handle Front Page filtering
             $paged = (get_query_var('page')) ? get_query_var('page') : ((get_query_var('paged')) ? get_query_var('paged') : 1);
