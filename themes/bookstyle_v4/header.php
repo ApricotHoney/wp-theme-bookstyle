@@ -75,10 +75,10 @@
                     <div class="color-dots">
                         <?php
                         $colors = array(
-                            'black' => 'Black',
+                            'brown' => 'Brown',
                             'blue' => 'Blue',
                             'green' => 'Green',
-                            'orange' => 'Orange',
+                            'yellow' => 'Yellow',
                             'red' => 'Red',
                             'white' => 'White',
                             'colorful' => 'Colorful'

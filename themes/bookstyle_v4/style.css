@@ -545,16 +545,16 @@ ul.gallery__tagbox li {
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.color-black {
-    background-color: #000;
+.color-brown {
+    background-color: #4e2f0b;
 }
 
 .color-blue {
     background-color: #00BFFF;
 }
 
-.color-orange {
-    background-color: #FFA500;
+.color-yellow {
+    background-color: #ffee00;
 }
 
 .color-green {
