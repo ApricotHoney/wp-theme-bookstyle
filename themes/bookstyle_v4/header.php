@@ -80,7 +80,8 @@
                             'green' => 'Green',
                             'orange' => 'Orange',
                             'red' => 'Red',
-                            'white' => 'White'
+                            'white' => 'White',
+                            'colorful' => 'Colorful'
                         );
                         $current_color = get_query_var('color');
                         foreach ($colors as $slug => $label) :

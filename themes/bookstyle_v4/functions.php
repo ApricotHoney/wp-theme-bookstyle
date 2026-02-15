@@ -122,6 +122,7 @@ function bookstyle_v4_custom_init() {
             'public' => true,
             'show_ui' => true,
             'show_in_rest' => true,
+            'show_admin_column' => true,
         )
     );
 }
@@ -148,13 +149,16 @@ function bookstyle_v4_search_filter($query) {
         return;
     }
 
-    // Apply to home, archive, search
-    if ( $query->is_home() || $query->is_archive() || $query->is_search() ) {
+    // Apply to home, archive, search, front_page
+    if ( $query->is_home() || $query->is_archive() || $query->is_search() || $query->is_front_page() ) {
         
         // Ensure we are targeting 'post' post type if not otherwise specified
         if ( ! $query->get('post_type') ) {
             $query->set('post_type', 'post');
         }
+
+        // Show all posts (no pagination)
+        $query->set('posts_per_page', -1);
 
         // Sort Filter
         if ( isset($_GET['sort']) && !empty($_GET['sort']) ) {

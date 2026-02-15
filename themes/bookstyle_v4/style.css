@@ -569,6 +569,13 @@ ul.gallery__tagbox li {
     background-color: #FF4500;
 }
 
+.color-colorful {
+    background: conic-gradient(#FF4500 0% 25%,
+            #00BFFF 25% 50%,
+            #FFD700 50% 75%,
+            #32CD32 75% 100%);
+}
+
 /* ==========================================================================
    Unified Page Styles (About, Works, Gallery, HowTo)
    ========================================================================== */
