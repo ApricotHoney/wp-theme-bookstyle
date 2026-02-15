@@ -149,8 +149,8 @@ function bookstyle_v4_search_filter($query) {
         return;
     }
 
-    // Apply to home, archive, search, front_page
-    if ( $query->is_home() || $query->is_archive() || $query->is_search() || $query->is_front_page() ) {
+    // Apply to home, archive, search
+    if ( $query->is_home() || $query->is_archive() || $query->is_search() ) {
         
         // Ensure we are targeting 'post' post type if not otherwise specified
         if ( ! $query->get('post_type') ) {

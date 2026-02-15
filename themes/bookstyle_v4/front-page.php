@@ -9,20 +9,71 @@
         <div id="cover-grid" class="cover-grid">
         <div id="cover-grid" class="cover-grid">
             <?php
+            // Custom logic to handle Front Page filtering
+            $paged = (get_query_var('page')) ? get_query_var('page') : ((get_query_var('paged')) ? get_query_var('paged') : 1);
+            
+            $args = array(
+                'post_type' => 'post',
+                'post_status' => 'publish',
+                'posts_per_page' => -1, // Show all
+                'paged' => $paged,
+                'orderby' => 'date',
+                'order' => 'DESC'
+            );
+
+            // Category Filter
+            if ( isset($_GET['cat']) && !empty($_GET['cat']) && $_GET['cat'] > 0 ) {
+                $args['cat'] = intval($_GET['cat']);
+            }
+
+            // Sort Filter
+            if ( isset($_GET['sort']) && !empty($_GET['sort']) ) {
+                switch ($_GET['sort']) {
+                    case 'old':
+                        $args['order'] = 'ASC';
+                        break;
+                    case 'rand':
+                        $args['orderby'] = 'rand';
+                        break;
+                    case 'new':
+                    default:
+                        $args['order'] = 'DESC';
+                        break;
+                }
+            }
+
+            // Color Filter
+            // Use get_query_var if available, fallback to $_GET
+            $color_query = get_query_var('color') ? get_query_var('color') : (isset($_GET['color']) ? $_GET['color'] : '');
+            
+            if ( !empty($color_query) ) {
+                $args['tax_query'] = array(
+                    array(
+                        'taxonomy' => 'color',
+                        'field' => 'slug',
+                        'terms' => sanitize_text_field($color_query),
+                    ),
+                );
+            }
+            
+            $the_query = new WP_Query($args);
+            
             $posts_per_shelf = 6; // Adjust based on design
             $count = 0;
             
-            if ( have_posts() ) : 
+            if ( $the_query->have_posts() ) : 
                 echo '<div class="book-shelf-row">'; // Start first shelf
                 
-                while ( have_posts() ) : the_post();
+                while ( $the_query->have_posts() ) : $the_query->the_post();
                     if ($count > 0 && $count % $posts_per_shelf == 0) {
                         echo '</div><div class="book-shelf-row">'; // Close previous and start new shelf
                     }
                     
                     $cats = get_the_category();
                     $slugs = [];
-                    foreach($cats as $cat) { $slugs[] = $cat->slug; }
+                    if ($cats) {
+                        foreach($cats as $cat) { $slugs[] = $cat->slug; }
+                    }
                     $class_names = implode(' ', $slugs);
             ?>
             <article class="cover-item <?php echo esc_attr($class_names); ?>">
@@ -63,7 +114,7 @@
                 // No posts found
                 echo '<p>記事が見つかりませんでした。</p>';
             endif;
-            // No wp_reset_postdata needed for main query
+            wp_reset_postdata(); 
             ?>
         </div>
 
