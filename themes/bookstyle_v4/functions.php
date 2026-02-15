@@ -156,6 +156,9 @@ function bookstyle_v4_search_filter($query) {
             $query->set('post_type', 'post');
         }
 
+        // Show all posts (no pagination)
+        $query->set('posts_per_page', -1);
+
         // Sort Filter
         if ( isset($_GET['sort']) && !empty($_GET['sort']) ) {
             switch ($_GET['sort']) {
