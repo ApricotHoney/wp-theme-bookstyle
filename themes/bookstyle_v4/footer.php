@@ -43,6 +43,22 @@
 
 </div><!-- #wrapper -->
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+        var inputs = searchForm.querySelectorAll('select, input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.addEventListener('change', function() {
+                // If it's a radio button, we might want to uncheck if clicked again? 
+                // Standard radio behavior is cannot uncheck. 
+                // Implementation: just submit on change.
+                searchForm.submit();
+            });
+        });
+    }
+});
+</script>
 <?php wp_footer(); ?>
 </body>
 </html>

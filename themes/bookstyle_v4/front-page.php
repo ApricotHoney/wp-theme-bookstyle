@@ -15,6 +15,38 @@
                 'orderby' => 'date',
                 'order' => 'DESC'
             );
+
+            // Category Filter
+            if (isset($_GET['cat']) && !empty($_GET['cat']) && $_GET['cat'] > 0) {
+                $args['cat'] = intval($_GET['cat']);
+            }
+
+            // Sort Filter
+            if (isset($_GET['sort']) && !empty($_GET['sort'])) {
+                switch ($_GET['sort']) {
+                    case 'old':
+                        $args['order'] = 'ASC';
+                        break;
+                    case 'rand':
+                        $args['orderby'] = 'rand';
+                        break;
+                    case 'new':
+                    default:
+                        $args['order'] = 'DESC';
+                        break;
+                }
+            }
+
+            // Color Filter
+            if (isset($_GET['color']) && !empty($_GET['color'])) {
+                $args['tax_query'] = array(
+                    array(
+                        'taxonomy' => 'color',
+                        'field' => 'slug',
+                        'terms' => sanitize_text_field($_GET['color']),
+                    ),
+                );
+            }
             $the_query = new WP_Query($args);
             
             $posts_per_shelf = 6; // Adjust based on design

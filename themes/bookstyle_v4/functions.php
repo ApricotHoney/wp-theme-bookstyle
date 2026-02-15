@@ -110,6 +110,20 @@ function bookstyle_v4_custom_init() {
             'show_in_rest' => true,
         )
     );
+
+    // Color Taxonomy (for posts)
+    register_taxonomy(
+        'color',
+        'post',
+        array(
+            'hierarchical' => false,
+            'label' => 'カラー',
+            'singular_label' => 'カラー',
+            'public' => true,
+            'show_ui' => true,
+            'show_in_rest' => true,
+        )
+    );
 }
 add_action( 'init', 'bookstyle_v4_custom_init' );
 
@@ -127,3 +141,50 @@ function get_the_term_list_nolink( $id = 0, $taxonomy, $before = '', $sep = '', 
     
     return $before . join( $sep, $term_names ) . $after;
 }
+
+// Custom Search Filter Logic (pre_get_posts)
+function bookstyle_v4_search_filter($query) {
+    if ( is_admin() || ! $query->is_main_query() ) {
+        return;
+    }
+
+    // Apply to home, archive, search
+    if ( $query->is_home() || $query->is_archive() || $query->is_search() ) {
+        
+        // Ensure we are targeting 'post' post type if not otherwise specified
+        if ( ! $query->get('post_type') ) {
+            $query->set('post_type', 'post');
+        }
+
+        // Sort Filter
+        if ( isset($_GET['sort']) && !empty($_GET['sort']) ) {
+            switch ($_GET['sort']) {
+                case 'old':
+                    $query->set('order', 'ASC');
+                    $query->set('orderby', 'date');
+                    break;
+                case 'rand':
+                    $query->set('orderby', 'rand');
+                    break;
+                case 'new':
+                default:
+                    $query->set('order', 'DESC');
+                    $query->set('orderby', 'date');
+                    break;
+            }
+        }
+
+        // Color Filter (Taxonomy)
+        if ( isset($_GET['color']) && !empty($_GET['color']) ) {
+            $tax_query = array(
+                array(
+                    'taxonomy' => 'color',
+                    'field' => 'slug',
+                    'terms' => sanitize_text_field($_GET['color']),
+                ),
+            );
+            $query->set('tax_query', $tax_query);
+        }
+    }
+}
+add_action( 'pre_get_posts', 'bookstyle_v4_search_filter' );
