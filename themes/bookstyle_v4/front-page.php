@@ -58,18 +58,15 @@
 
             $the_query = new WP_Query($args);
 
-            $posts_per_shelf = 7; // Adjust based on design
             $count = 0;
 
             if ($the_query->have_posts()):
-                echo '<div class="book-shelf-row">'; // Start first shelf
+                echo '<div class="book-shelf-row">'; // Start shelf container
             
                 while ($the_query->have_posts()):
                     $the_query->the_post();
-                    if ($count > 0 && $count % $posts_per_shelf == 0) {
-                        echo '</div><div class="book-shelf-row">'; // Close previous and start new shelf
-                    }
-
+                    // Removed fixed chunking logic
+            
                     $cats = get_the_category();
                     $slugs = [];
                     if ($cats) {
@@ -114,7 +111,7 @@
                     <?php
                     $count++;
                 endwhile;
-                echo '</div>'; // Close last shelf
+                echo '</div>'; // Close shelf container
             else:
                 // No posts found
                 echo '<p>記事が見つかりませんでした。</p>';

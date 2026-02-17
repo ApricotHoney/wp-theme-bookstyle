@@ -1,16 +1,10 @@
+</div><!-- #wrapper -->
+
 <footer id="footer" class="footer">
     <!-- Cat image (sitting on top of footer) -->
     <img src="<?php echo get_template_directory_uri(); ?>/images/hatchan.png" alt="BookStyle Cat" class="cat-image">
 
     <div class="footer-inner">
-        <nav class="footMenu">
-            <?php wp_nav_menu(array(
-                'theme_location' => 'footMenu',
-                'container' => false,
-                'depth' => 1
-            )); ?>
-        </nav>
-        
         <p class="copyright">copyright© BookStyle All Rights Reserved.</p>
     </div>
 </footer>
@@ -41,24 +35,25 @@
     </div>
 </div>
 
-</div><!-- #wrapper -->
+
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchForm = document.querySelector('.search-form');
-    if (searchForm) {
-        var inputs = searchForm.querySelectorAll('select, input[type="radio"]');
-        inputs.forEach(function(input) {
-            input.addEventListener('change', function() {
-                // If it's a radio button, we might want to uncheck if clicked again? 
-                // Standard radio behavior is cannot uncheck. 
-                // Implementation: just submit on change.
-                searchForm.submit();
+    document.addEventListener('DOMContentLoaded', function () {
+        var searchForm = document.querySelector('.search-form');
+        if (searchForm) {
+            var inputs = searchForm.querySelectorAll('select, input[type="radio"]');
+            inputs.forEach(function (input) {
+                input.addEventListener('change', function () {
+                    // If it's a radio button, we might want to uncheck if clicked again? 
+                    // Standard radio behavior is cannot uncheck. 
+                    // Implementation: just submit on change.
+                    searchForm.submit();
+                });
             });
-        });
-    }
-});
+        }
+    });
 </script>
 <?php wp_footer(); ?>
 </body>
+
 </html>

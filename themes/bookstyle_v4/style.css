@@ -86,10 +86,9 @@ img {
     /* Remove separate background */
     background: transparent;
     padding: 20px;
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    bottom: 0;
+    height: 100vh;
     overflow-y: auto;
     /* Scroll if sidebar content is too long */
     /* height: auto;  Let it grow with content or stretch */
@@ -100,6 +99,18 @@ img {
     margin-top: 0;
     margin-left: 20px;
     margin-bottom: 40px;
+}
+/* ... skipped ... */
+/* Main Content */
+.l_main {
+    /* margin-left: var(--sidebar-width); Removed for flex layout */
+    width: calc(100% - var(--sidebar-width));
+    /* margin-left: var(--sidebar-width); Removed for sticky layout */
+    /* Add space for fixed sidebar */
+    padding-bottom: 40px;
+    /* Space for footer */
+    /* Transparent to show body background */
+    background: transparent;
 }
 
 .sidebar-logo h1 {
@@ -222,7 +233,6 @@ img {
 .l_main {
     /* margin-left: var(--sidebar-width); Removed for flex layout */
     width: calc(100% - var(--sidebar-width));
-    margin-left: var(--sidebar-width);
     /* Add space for fixed sidebar */
     padding-bottom: 40px;
     /* Space for footer */
@@ -242,12 +252,6 @@ img {
 
 /* Shelf Design (Front Page) */
 .book-shelf-row {
-    /* background: url('images/bg_display.png'); */
-    /* Shelf background */
-    /* background-repeat: repeat-x; */
-    /* background-position: bottom left; */
-    /* Align shelf to bottom */
-    /* Remove fake CSS border/shadow as image has it */
     padding: 57px 40px 0px 42px;
     /* Top padding for space, Bottom padding to push books up from shelf edge */
     margin-bottom: 0;
@@ -256,37 +260,30 @@ img {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 27px;
+    row-gap: 55px; /* Add vertical gap between shelves */
     position: relative;
     min-height: 280px;
     z-index: 3;
     /* Ensure height for background */
 }
-.book-shelf-row::before{
-    content: "";
-    position: absolute;
-    bottom: -100px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* 2つのグラデーションを重ねて、左と右に配置 */
-    background: 
-        linear-gradient(#464646, #464646) no-repeat 50px 0 / 15px 100%, /* 左の棒 */
-        linear-gradient(#464646, #464646) no-repeat calc(100% - 50px) 0 / 15px 100%; /* 右の棒 */
-    z-index: 1;
-}
+
 
 .book-shelf-row::after {
+    /* Previously shelf background, now moved to individual items */
+    display: none;
+}
+
+.cover-item::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: -22px; /* Adjust based on shelf thickness */
+    left: -25px;   /* Increased to ensure overlap (gap is 27px) */
+    right: -25px;
+    height: 243px;  /* Estimated shelf height */
     background: url('images/bg_display.png');
     background-repeat: repeat-x;
     background-position: bottom left;
-    z-index: 2; /* 棒(z-index: 1)より手前 */
-    pointer-events: none;
+    z-index: -1;
 }
 
 
@@ -297,18 +294,26 @@ img {
     position: relative;
     margin-bottom: 0;
     /* Items sit ON the border */
-    transition: transform 0.2s;
+    /* transition: transform 0.2s; Moved to .cover-image */
     z-index: 5;
 }
 
-.cover-item:hover {
+.cover-item:hover .cover-image {
     transform: translateY(-5px);
+}
+
+.cover-image {
+    transition: transform 0.2s;
+}
+
+.cover-item:hover {
+    /* transform: translateY(-5px); Removed to keep shelf static */
     opacity: 1;
 }
 
 .cover-image img {
     /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
-    box-shadow: 20px 0px 27px 1px rgba(0, 0, 0, 0.23);
+    box-shadow: 4px 0px 9px 1px rgba(0, 0, 0, 0.23);
     display: block;
     margin: 0 auto;
     width: 145px;
