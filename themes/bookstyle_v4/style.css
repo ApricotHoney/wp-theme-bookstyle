@@ -65,6 +65,14 @@ img {
     display: block;
 }
 
+/* アクセントフォント */
+.oswald {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* Layout */
 #wrapper {
     display: flex;
@@ -90,8 +98,8 @@ img {
 
 .sidebar-logo {
     margin-top: 30px;
+    margin-left: 20px;
     margin-bottom: 40px;
-    text-align: center;
 }
 
 .sidebar-logo h1 {
@@ -101,12 +109,26 @@ img {
 
 .logo-box {
     display: block;
-    width: 100%;
-    /* Picture frame effect */
+    width: 90%;
+    padding-bottom: 30px;
     border: 8px solid #333;
-    /* Dark frame */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    background: #000;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    background: #2e558f;
+    font-size: 55px;
+    color: #fff;
+    line-height: 1em;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+}
+
+.logo-box span{
+    font-size: 14px;
+    line-height: 1em;
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 1em;
 }
 
 .logo-img {
@@ -127,10 +149,13 @@ img {
 }
 
 .gMenu-list li a {
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-size: 20px;
+    /* letter-spacing: 1px; */
     color: #333;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 }
 
 /* Search Box */
