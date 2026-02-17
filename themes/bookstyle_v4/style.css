@@ -144,8 +144,9 @@ img {
 }
 
 .gMenu-list li {
-    margin-bottom: 15px;
-    width: 50%;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    width: 40%;
 }
 
 .gMenu-list li a {
@@ -156,7 +157,35 @@ img {
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
+    position: relative;
+    transition: opacity 0.3s, color 0.3s;
 }
+
+.gMenu-list li a::before {
+    content: ">";
+    position: absolute;
+    left: -15px;
+    color: #2e558f;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gMenu-list li a:hover::before,
+.gMenu-list li.current-menu-item a::before,
+.gMenu-list li.current-menu-ancestor a::before,
+.gMenu-list li.current_page_item a::before,
+.gMenu-list li.active a::before {
+    opacity: 1;
+}
+
+.gMenu-list li a:hover,
+.gMenu-list li.current-menu-item a,
+.gMenu-list li.current-menu-ancestor a,
+.gMenu-list li.current_page_item a,
+.gMenu-list li.active a {
+    color: #2e558f;
+}
+
 
 /* Search Box */
 .sidebar-search {
