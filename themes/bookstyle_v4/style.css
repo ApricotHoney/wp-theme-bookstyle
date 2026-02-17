@@ -97,7 +97,7 @@ img {
 }
 
 .sidebar-logo {
-    margin-top: 30px;
+    margin-top: 0;
     margin-left: 20px;
     margin-bottom: 40px;
 }
@@ -224,7 +224,7 @@ img {
     width: calc(100% - var(--sidebar-width));
     margin-left: var(--sidebar-width);
     /* Add space for fixed sidebar */
-    padding-bottom: 100px;
+    padding-bottom: 40px;
     /* Space for footer */
     /* Transparent to show body background */
     background: transparent;
@@ -235,17 +235,17 @@ img {
 }
 
 .l_wrap {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1380px;
+    margin: 0 auto 0 5%;
     padding: 0 40px;
 }
 
 /* Shelf Design (Front Page) */
 .book-shelf-row {
-    background: url('images/bg_display.png');
+    /* background: url('images/bg_display.png'); */
     /* Shelf background */
-    background-repeat: repeat-x;
-    background-position: bottom left;
+    /* background-repeat: repeat-x; */
+    /* background-position: bottom left; */
     /* Align shelf to bottom */
     /* Remove fake CSS border/shadow as image has it */
     padding: 57px 40px 0px 42px;
@@ -258,12 +258,35 @@ img {
     gap: 27px;
     position: relative;
     min-height: 280px;
+    z-index: 3;
     /* Ensure height for background */
 }
+.book-shelf-row::before{
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 2つのグラデーションを重ねて、左と右に配置 */
+    background: 
+        linear-gradient(#464646, #464646) no-repeat 50px 0 / 15px 100%, /* 左の棒 */
+        linear-gradient(#464646, #464646) no-repeat calc(100% - 50px) 0 / 15px 100%; /* 右の棒 */
+    z-index: 1;
+}
 
-/* Remove the pseudo-element shadow if image handles it */
 .book-shelf-row::after {
-    display: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/bg_display.png');
+    background-repeat: repeat-x;
+    background-position: bottom left;
+    z-index: 2; /* 棒(z-index: 1)より手前 */
+    pointer-events: none;
 }
 
 
@@ -275,6 +298,7 @@ img {
     margin-bottom: 0;
     /* Items sit ON the border */
     transition: transform 0.2s;
+    z-index: 5;
 }
 
 .cover-item:hover {
