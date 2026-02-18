@@ -53,17 +53,21 @@
                 <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
                     <!-- Category Select -->
                     <div class="search-item">
-                        <?php
-                        $cat_args = array(
-                            'show_option_all' => 'ジャンルでさがす',
-                            'orderby' => 'name',
-                            'name' => 'cat',
-                            'value_field' => 'term_id',
-                            'class' => 'search-select',
-                            'selected' => get_query_var('cat'),
-                        );
-                        wp_dropdown_categories($cat_args);
-                        ?>
+                        <select name="cat" id="cat" class="search-select">
+                            <option value="0">ジャンルをえらぶ</option>
+                            <?php
+                            $categories = get_categories(array(
+                                'orderby' => 'name',
+                                'order' => 'ASC'
+                            ));
+                            foreach ($categories as $category) {
+                                // Use description if available, otherwise name
+                                $label = !empty($category->description) ? $category->description : $category->name;
+                                $selected = (get_query_var('cat') == $category->term_id) ? 'selected' : '';
+                                echo '<option value="' . esc_attr($category->term_id) . '" ' . $selected . '>' . esc_html($label) . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <!-- Sort Select -->
@@ -94,11 +98,11 @@
                             foreach ($colors as $slug => $label):
                                 $checked = ($current_color === $slug) ? 'checked' : '';
                                 ?>
-                                <label class="color-dot-wrapper">
-                                    <input type="radio" name="color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
-                                    <span class="color-dot color-<?php echo esc_attr($slug); ?>"
-                                        title="<?php echo esc_attr($label); ?>"></span>
-                                </label>
+                                    <label class="color-dot-wrapper">
+                                        <input type="radio" name="color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
+                                        <span class="color-dot color-<?php echo esc_attr($slug); ?>"
+                                            title="<?php echo esc_attr($label); ?>"></span>
+                                    </label>
                             <?php endforeach; ?>
                         </div>
                     </div>

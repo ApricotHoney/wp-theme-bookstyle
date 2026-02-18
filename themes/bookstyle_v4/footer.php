@@ -16,7 +16,7 @@
         <span class="modal-close">&times;</span>
         <div class="modal-header">
             <span id="modal-title">No.xxx</span>
-            <span class="modal-tags">#アンティーク #赤 #植物</span> <!-- Placeholder tags -->
+            <span class="modal-tags"></span> <!-- Placeholder tags -->
         </div>
         <div class="modal-body">
             <div class="modal-image-container">
@@ -24,11 +24,11 @@
             </div>
             <div class="modal-actions">
                 <div class="terms-check">
-                    <label><input type="checkbox"> 利用規約に同意する</label>
+                    <label><input type="checkbox"> <a href="#" class="bd-link">利用規約</a>に同意する</label>
                 </div>
                 <div class="action-buttons">
-                    <a href="#" class="btn btn-green">個人利用で使用する ></a>
-                    <a href="#" class="btn btn-blue">商用利用で使用する ></a>
+                    <a href="#" class="btn btn-green">個人利用で使用する <span class="arrow"></span></a>
+                    <a href="#" class="btn btn-blue">商用利用で使用する <span class="arrow"></span></a>
                 </div>
             </div>
         </div>

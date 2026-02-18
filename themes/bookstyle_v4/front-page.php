@@ -106,6 +106,16 @@
                         <div class="cover-meta" style="display:none;">
                             <div class="cover-title"><?php the_title(); ?></div>
                             <div class="cover-date"><?php the_time('Y/m/d'); ?></div>
+                            <div class="cover-tags">
+                                <?php
+                                $post_tags = get_the_tags();
+                                if ($post_tags) {
+                                    foreach ($post_tags as $tag) {
+                                        echo '#' . $tag->name . ' ';
+                                    }
+                                }
+                                ?>
+                            </div>
                         </div>
                     </article>
                     <?php
