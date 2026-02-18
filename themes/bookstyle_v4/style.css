@@ -338,16 +338,16 @@ img {
     /* Full width to overlay sidebar */
     width: 100%;
     margin-left: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll from cat image */
 }
 
 .footer .cat-image {
-    position: absolute;
+    position: fixed; /* Changed to fixed default */
     right: 0px;
-    top: -70px;
+    bottom: -20px;
+    top: auto;
     width: 130px;
     z-index: 501;
-    /* Initial state: Hidden (pushed off-screen) or managed via class */
+    /* Initial state: Hidden (pushed off-screen) */
     transform: translateX(200%); /* Start hidden */
     transition: transform 0.5s ease-out;
     cursor: pointer; /* Clickable */
@@ -374,6 +374,7 @@ img {
 /* Leaving State (Click to hide) */
 .footer .cat-image.is-leaving {
     transform: translateX(200%);
+    position: fixed; /* Ensure fixed while leaving */
 }
 
 /* Modal Styles */
@@ -740,7 +741,7 @@ ul.gallery__tagbox li {
 
 /* Page Content Container - Refined for paper/sheet look */
 .content-container {
-    background: #fff;
+    background: rgb(255 255 255 / 0.65);
     padding: 60px;
     /* border-radius: 0;  Sharp edges like paper */
     margin: 20px auto;
@@ -797,21 +798,26 @@ ul.gallery__tagbox li {
 
 /* Header Area */
 .unified-header {
+    margin-top: 70px;
     margin-bottom: 40px;
     text-align: center;
 }
 
 .unified-title-en {
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 70px;
     margin: 0;
     line-height: 1;
     color: #333;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .unified-title-jp {
-    font-size: 14px;
+    font-size: 17px;
     color: #666;
+    letter-spacing: 2px;
     margin-top: 5px;
 }
 
@@ -848,18 +854,18 @@ ul.gallery__tagbox li {
 
 /* Pink Marker Highlighter */
 .marker {
-    background: linear-gradient(transparent 70%, #ffdddd 70%);
+    background: linear-gradient(transparent 50%, #f2eda4 70%);
     /* Light pink marker */
     font-weight: bold;
 }
 
 /* Section Titles with Pink Icon (H3) */
 .icon-heading {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 15px;
     position: relative;
-    padding-left: 25px;
+    padding-left: 30px;
     color: #333;
     background: none;
     /* Override previous h3 styles if needed */
@@ -869,13 +875,11 @@ ul.gallery__tagbox li {
     content: '';
     position: absolute;
     left: 0;
-    top: 5px;
-    /* Adjust alignment */
-    width: 15px;
-    height: 15px;
-    background-color: #ff9999;
-    /* Pink circle */
-    border-radius: 50%;
+    top: 2px; /* Adjusted for image alignment */
+    width: 26px; /* Increased for image visibility */
+    height: 26px;
+    background: url("images/icon_h3.png") no-repeat center center;
+    background-size: contain;
 }
 
 /* Styled H2 (Center with marker underline) */

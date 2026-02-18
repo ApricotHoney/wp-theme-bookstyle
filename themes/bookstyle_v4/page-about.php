@@ -6,43 +6,43 @@ get_header(); ?>
 
 <main id="main" class="l_main">
     <div class="l_wrap">
-        
+
+        <header class="unified-header">
+            <h1 class="unified-title-en">ABOUT</h1>
+            <p class="unified-title-jp">Book Styleについて</p>
+        </header>
         <div class="content-container">
-            <header class="unified-header">
-                <h1 class="unified-title-en">About</h1>
-                <p class="unified-title-jp">Book Styleについて</p>
-            </header>
 
             <section class="unified-section unified-intro">
                 <div class="unified-intro-text">
                     <h3 class="icon-heading">BOOKSTYLEについて</h3>
                     <p class="unified-lead">「いつでも、どこでも<span class="marker">読書の時間をもっと楽しいものに</span>」</p>
-                    
+
                     <p>
                         お気に入りの本、手帳を<span class="marker">自分だけのオリジナルな一冊</span>にしたい！<br>
                         簡単に、手軽に、おしゃれなブックカバーを作りたい！<br>
                         外出先でも人の目を気にせず、<span class="marker">読書の時間を楽しみたい！</span><br>
                         自宅の本棚をもっとオシャレにしたい！
                     </p>
-                    
+
                     <p>
                         そんな思いからBook Styleは誕生しました。<br>
                         Book Styleのブックカバーデザイン、しおりデザインは<br>
                         全て管理人が試行錯誤しながら一つ一つ制作しています。<br>
                         あなたの大切な一冊にぴったりのデザインが見つかると嬉しいです。
                     </p>
-                    
+
                     <p>
                         Book Styleは<span class="marker">無料でブックカバーのデザインをダウンロード</span>できるサイトです。<br>
                         デザインをダウンロードされた時点で、利用規約に同意したものとみなします。<br>
                         下記の「利用規約」をよく読まれた上で正しくご利用ください。<br>
-                        商用利用については<a href="#">noteを参照</a>ください
+                        商用利用については<a href="#" class="bd-link">noteを参照</a>ください
                     </p>
-                    
+
                     <p>
-                        ブックカバーの折り方は<a href="<?php echo home_url('/howto'); ?>">How toページ</a>をご覧ください。
+                        ブックカバーの折り方は<a href="<?php echo home_url('/howto'); ?>" class="bd-link">How toページ</a>をご覧ください。
                     </p>
-                    
+
                     <p style="margin-top: 20px; font-size: 0.9em; color: #999; text-align: right;">サイト開設 : 2010/2/22</p>
                 </div>
                 <div class="unified-intro-image">

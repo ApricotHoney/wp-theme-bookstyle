@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
     // Cat Image Scroll Behavior
     var $catImage = $('.footer .cat-image');
     var $footer = $('.footer');
-    var scrollThreshold = $(window).height() * 1; // 2 screens down
+    var scrollThreshold = $(window).height() * 0.5; // screens down
 
     $(window).on('scroll', function () {
         var scrollTop = $(window).scrollTop();
