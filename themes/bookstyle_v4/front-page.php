@@ -61,12 +61,11 @@
             $count = 0;
 
             if ($the_query->have_posts()):
-                echo '<div class="book-shelf-row">'; // Start shelf container
+                echo '<div class="book-shelf-row">'; // Unified shelf for responsiveness
             
                 while ($the_query->have_posts()):
                     $the_query->the_post();
-                    // Removed fixed chunking logic
-            
+
                     $cats = get_the_category();
                     $slugs = [];
                     if ($cats) {
@@ -96,8 +95,7 @@
                                 $modal_url = get_template_directory_uri() . '/images/' . $pick['modal'];
                                 ?>
                                 <a href="<?php echo esc_url($modal_url); ?>" class="lightbox" data-id="<?php the_ID(); ?>">
-                                    <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>"
-                                        style="width:210px; height:auto; display:block; margin:0 auto;">
+                                    <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>">
                                 </a>
                             <?php endif; ?>
                         </div>

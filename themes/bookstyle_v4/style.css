@@ -252,55 +252,43 @@ img {
 
 /* Shelf Design (Front Page) */
 .book-shelf-row {
-    padding: 57px 40px 0px 42px;
-    /* Top padding for space, Bottom padding to push books up from shelf edge */
+    padding: 20px 0 0 0;
+    margin-top: 50px;
     margin-bottom: 0;
-    /* Remove gap between shelves */
     display: flex;
     justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 27px;
-    row-gap: 55px; /* Add vertical gap between shelves */
+    flex-wrap: wrap; /* Restore wrapping */
+    gap: 0; /* No gap between items to keep background seamless */
     position: relative;
-    min-height: 280px;
     z-index: 3;
-    /* Ensure height for background */
+    width: 100%;
 }
 
-
-.book-shelf-row::after {
-    /* Previously shelf background, now moved to individual items */
-    display: none;
+.cover-item {
+    width: 180px; /* Fixed width to match shelf background repeat if possible */
+    text-align: center;
+    position: relative;
+    margin-bottom: 40px; /* Space for the next shelf line */
+    z-index: 5;
+    padding-bottom: 23px; /* Push item up from shelf edge */
 }
 
 .cover-item::before {
     content: "";
     position: absolute;
-    bottom: -22px; /* Adjust based on shelf thickness */
-    left: -25px;   /* Increased to ensure overlap (gap is 27px) */
-    right: -25px;
-    height: 243px;  /* Estimated shelf height */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 243px;
     background: url('images/bg_display.png');
-    background-repeat: repeat-x;
-    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    /* background-size: 100% auto; */
     z-index: -1;
 }
 
-
-.cover-item {
-    width: 150px;
-    /* Adjust based on image size */
-    text-align: center;
-    position: relative;
-    margin-bottom: 0;
-    /* Items sit ON the border */
-    /* transition: transform 0.2s; Moved to .cover-image */
-    z-index: 5;
-}
-
 .cover-item:hover .cover-image {
-    transform: translateY(-5px);
-    transform: scale(1.05);
+    transform: translateY(-8px) scale(1.05);
 }
 
 .cover-image {
@@ -319,6 +307,7 @@ img {
     margin: 0 auto;
     width: 145px;
     height: 200px;
+    max-width: 145px; /* Force size to prevent overflow */
     object-fit: cover;
     object-position: 100% 100%;
     border-radius: 5px 0px 0px 3px;
@@ -416,6 +405,41 @@ img {
     font-size: 60px;
     cursor: pointer;
     color: #fff;
+}
+
+/* Gallery Modal specific styles */
+.modal.is-gallery-modal .modal-header,
+.modal.is-gallery-modal .terms-check,
+.modal.is-gallery-modal .action-buttons,
+.modal.is-gallery-modal .modal-tags {
+    display: none !important;
+}
+
+.modal.is-gallery-modal .modal-content {
+    background: transparent; /* Optional: make background transparent if just showing image */
+    box-shadow: none;
+    border: none;
+    max-width: 90%; /* Allow larger width for image */
+    width: auto;
+}
+
+.modal.is-gallery-modal .modal-body {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.is-gallery-modal .modal-image-container {
+    background: transparent;
+    padding: 0;
+}
+
+.modal.is-gallery-modal .modal-close {
+    color: #fff; /* White close button for dark/transparent background */
+    top: -30px;
+    right: -30px;
+    opacity: 0.8;
 }
 
 
@@ -583,27 +607,7 @@ img {
    ========================================================================== */
 
 /* Title Styles */
-h2.h2 {
-    background: url("images/line_h1_bg.gif") repeat-x center bottom;
-    /* Need to ensure image exists or path is correct */
-    color: #6AACB8;
-    font-size: 30px;
-    font-weight: 400;
-    margin: 10px 0 25px 0;
-    padding-bottom: 30px;
-    position: relative;
-    border-bottom: none;
-    /* Override any defaults */
-}
 
-h2.h2::after {
-    bottom: -38px;
-    content: url("images/line_h1_01.gif");
-    /* Need to ensure image exists or path is correct */
-    left: 0;
-    padding-bottom: 38px;
-    position: absolute;
-}
 
 h3.h3 {
     background-image: url("images/icon-s22da8f8f13.png");
@@ -860,7 +864,8 @@ ul.gallery__tagbox li {
 }
 
 /* Section Titles with Pink Icon (H3) */
-.icon-heading {
+.icon-heading,
+.unified-section h3 {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -871,7 +876,8 @@ ul.gallery__tagbox li {
     /* Override previous h3 styles if needed */
 }
 
-.icon-heading::before {
+.icon-heading::before,
+.unified-section h3::before {
     content: '';
     position: absolute;
     left: 0;
@@ -883,22 +889,22 @@ ul.gallery__tagbox li {
 }
 
 /* Styled H2 (Center with marker underline) */
-h2.unified-h2 {
+h2.unified-h2,
+.unified-section h2 {
     text-align: center;
-    background: none;
-    /* Remove default h2 line bg */
     border: none;
-    font-size: 32px;
-    margin-bottom: 10px;
-    padding-bottom: 0;
+    font-size: 45px;
+    font-weight: bold;
+    padding-bottom: 5px; /* Space for the line image */
     display: inline-block;
     position: relative;
-    background: linear-gradient(transparent 70%, #ffdddd 70%);
+    background: url("images/line_h2.png") no-repeat center bottom;
     width: auto;
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     display: table;
     /* Center centering */
-    margin: 0 auto 20px auto;
+    margin: 30px auto 30px auto;
 }
 
 h2.unified-h2::after {
@@ -1003,4 +1009,181 @@ h2.unified-h2::after {
     font-size: 12px;
     text-align: right;
     color: #999;
+}
+/* ==========================================================================
+   Blog Styles
+   ========================================================================== */
+
+.blog-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1200px; /* Slightly wider for grid */
+    padding-bottom: 50px;
+}
+
+.blog-item {
+    background: rgb(255 255 255 / 0.65);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.blog-item-inner {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    gap: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-item-thumb {
+    width: 100%;
+    height: 200px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.blog-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-item-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.blog-item-meta {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.blog-item-meta .category {
+    margin-left: 10px;
+    color: #6AACB8;
+}
+
+.blog-item-title {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+    color: #333;
+    font-weight: bold;
+}
+
+.blog-item-excerpt {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Blog Detail Specifics */
+.post-meta-top {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #888;
+}
+
+.blog-body {
+    line-height: 2;
+    color: #333;
+}
+
+.blog-body p {
+    margin-bottom: 2em;
+}
+
+.blog-body h2 {
+    text-align: center;
+    border: none;
+    font-size: 45px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    display: inline-block;
+    position: relative;
+    background: url('images/line_h2.png') no-repeat center bottom;
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: table;
+    margin: 40px auto 40px auto;
+}
+
+.blog-body h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 30px;
+    color: #333;
+    background: none;
+}
+
+.blog-body h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 26px;
+    height: 26px;
+    background: url('images/icon_h3.png') no-repeat center center;
+    background-size: contain;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination .current {
+    background: #6AACB8;
+    border-color: #6AACB8;
+    color: #fff;
+}
+
+/* Responsive Blog */
+@media screen and (max-width: 1024px) {
+    .blog-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blog-list {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+    .blog-item-thumb {
+        height: 180px;
+    }
 }

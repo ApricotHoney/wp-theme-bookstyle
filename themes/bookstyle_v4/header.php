@@ -98,11 +98,11 @@
                             foreach ($colors as $slug => $label):
                                 $checked = ($current_color === $slug) ? 'checked' : '';
                                 ?>
-                                    <label class="color-dot-wrapper">
-                                        <input type="radio" name="color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
-                                        <span class="color-dot color-<?php echo esc_attr($slug); ?>"
-                                            title="<?php echo esc_attr($label); ?>"></span>
-                                    </label>
+                                <label class="color-dot-wrapper">
+                                    <input type="radio" name="color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
+                                    <span class="color-dot color-<?php echo esc_attr($slug); ?>"
+                                        title="<?php echo esc_attr($label); ?>"></span>
+                                </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -117,8 +117,10 @@
             </div>
 
             <div class="sidebar-social">
-                <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon_x.png" alt="X"></a>
-                <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon_instagram.png"
+                <a href="https://twitter.com/book_style_neri" target="_blank"><img
+                        src="<?php echo get_template_directory_uri(); ?>/images/icon_x.png" alt="X"></a>
+                <a href="https://instagram.com/neri_bookstyle/" target="_blank"><img
+                        src="<?php echo get_template_directory_uri(); ?>/images/icon_instagram.png"
                         alt="Instagram"></a>
             </div>
         </aside>

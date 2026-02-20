@@ -15,6 +15,13 @@ jQuery(document).ready(function ($) {
         // $('#modal-date').text(date); // If needed
         $('.modal-tags').text(tags);
 
+        // Check if this is a gallery item
+        if ($btn.closest('.gallery').length > 0) {
+            $('#book-modal').addClass('is-gallery-modal');
+        } else {
+            $('#book-modal').removeClass('is-gallery-modal');
+        }
+
         // Show Modal
         $('#book-modal').fadeIn();
         $('body').css('overflow', 'hidden'); // Prevent background scroll
