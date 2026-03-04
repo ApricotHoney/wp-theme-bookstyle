@@ -1,19 +1,72 @@
 jQuery(document).ready(function ($) {
+    var modalSwiper = null;
+
     // Open Modal
     $('.lightbox').on('click', function (e) {
         e.preventDefault();
         var $btn = $(this);
-        var imgUrl = $btn.attr('href');
+        var imgUrl = $btn.attr('href'); // Fallback if no JSON
         var $article = $btn.closest('article');
         var title = $article.find('.cover-title').text();
         var date = $article.find('.cover-date').text();
         var tags = $article.find('.cover-tags').text();
+        var commercialUrl = $article.find('.cover-commercial-url').text().trim();
+        var imagesData = $article.find('.cover-images-data').text().trim();
 
-        // Populate Modal
-        $('#modal-img').attr('src', imgUrl);
+        // Parse images
+        var images = [];
+        if (imagesData) {
+            try {
+                images = JSON.parse(imagesData);
+            } catch (e) { console.error("Could not parse image data"); }
+        }
+        if (images.length === 0) {
+            images.push(imgUrl); // Fallback to single image
+        }
+
+        // Populate Modal Sliders
+        var $wrapper = $('#modal-swiper-wrapper');
+        $wrapper.empty();
+        images.forEach(function (url) {
+            var slide = '<div class="swiper-slide"><img src="' + url + '" alt="Book Cover"></div>';
+            $wrapper.append(slide);
+        });
+
+        // Initialize Swiper
+        if (modalSwiper !== null) {
+            modalSwiper.destroy(true, true);
+        }
+        modalSwiper = new Swiper('.modal-image-container.swiper', {
+            loop: images.length > 1,
+            autoplay: images.length > 1 ? {
+                delay: 3000,
+                disableOnInteraction: false,
+            } : false,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Disable navigation if only 1 image
+            watchOverflow: true,
+        });
+
         $('#modal-title').text('No.' + title); // Assumption from design "No.xxx"
         // $('#modal-date').text(date); // If needed
         $('.modal-tags').text(tags);
+
+        // Update Personal Use button
+        var personalUrl = 'https://bookstyle.xyz/cover_personal/BC_' + title + '.png';
+        $('#modal-btn-personal').attr('href', personalUrl);
+        $('#modal-btn-personal').attr('onclick', "ga('send', 'event', 'bc_count', 'downlode', 'BC_" + title + "');");
+
+        // Update Commercial Use button
+        if (commercialUrl) {
+            $('#modal-btn-commercial').attr('href', commercialUrl).show();
+            $('#modal-btn-commercial').attr('target', '_blank').attr('rel', 'noopener noreferrer');
+        } else {
+            $('#modal-btn-commercial').hide();
+            $('#modal-btn-commercial').attr('href', '#'); // Reset
+        }
 
         // Check if this is a gallery item
         if ($btn.closest('.gallery').length > 0) {

@@ -19,21 +19,33 @@
             <span class="modal-tags"></span> <!-- Placeholder tags -->
         </div>
         <div class="modal-body">
-            <div class="modal-image-container">
-                <img id="modal-img" src="" alt="Book Cover">
+            <!-- Swiper Container -->
+            <div class="modal-image-container swiper">
+                <div class="swiper-wrapper" id="modal-swiper-wrapper">
+                    <!-- Slides injected by JS -->
+                </div>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
             <div class="modal-actions">
                 <div class="terms-check">
-                    <label><input type="checkbox"> <a href="#" class="bd-link">利用規約</a>に同意する</label>
+                    <label><input type="checkbox" id="modal-terms-checkbox"> <a
+                            href="<?php echo esc_url(home_url('/about#ToS')); ?>"
+                            target="_blank" rel="noopener noreferrer" class="bd-link">利用規約</a>に同意する</label>
                 </div>
                 <div class="action-buttons">
-                    <a href="#" class="btn btn-green">個人利用で使用する <span class="arrow"></span></a>
-                    <a href="#" class="btn btn-blue">商用利用で使用する <span class="arrow"></span></a>
+                    <a href="#" id="modal-btn-personal" class="btn btn-green bd-disabled">個人利用で使用する <span
+                            class="arrow"></span></a>
+                    <a href="#" id="modal-btn-commercial" class="btn btn-blue bd-disabled">商用利用で使用する <span
+                            class="arrow"></span></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Swiper JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
 
@@ -50,6 +62,30 @@
                     searchForm.submit();
                 });
             });
+        }
+
+ // Modal Terms Checkbox Logic
+        const termsCheckbox = document.getElementById('modal-terms-checkbox');
+        const btnPersonal = document.getElementById('modal-btn-personal');
+        const btnCommercial = document.getElementById('modal-btn-commercial');
+
+        if (termsCheckbox && btnPersonal && btnCommercial) {
+            // Initial state (in case browser remembers checkbox state on reload)
+            toggleButtons(termsCheckbox.checked);
+
+            termsCheckbox.addEventListener('change', function() {
+                toggleButtons(this.checked);
+            });
+
+            function toggleButtons(isChecked) {
+                if (isChecked) {
+                    btnPersonal.classList.remove('bd-disabled');
+                    btnCommercial.classList.remove('bd-disabled');
+                } else {
+                    btnPersonal.classList.add('bd-disabled');
+                    btnCommercial.classList.add('bd-disabled');
+                }
+            }
         }
     });
 </script>

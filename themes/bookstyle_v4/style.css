@@ -407,12 +407,62 @@ img {
     color: #fff;
 }
 
+/* Modal Checkbox Size */
+.terms-check label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.terms-check label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0;
+}
+
 /* Gallery Modal specific styles */
 .modal.is-gallery-modal .modal-header,
 .modal.is-gallery-modal .terms-check,
 .modal.is-gallery-modal .action-buttons,
 .modal.is-gallery-modal .modal-tags {
     display: none !important;
+}
+
+/* Modal Swiper Styles */
+.modal-image-container.swiper {
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 40px; /* Space for pagination and gap */
+}
+
+.modal-image-container.swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image-container.swiper .swiper-slide img {
+    max-width: 100%;
+    max-height: 70vh; /* Prevent it from getting too tall */
+    object-fit: contain;
+}
+
+/* Customize Swiper Pagination */
+.modal-image-container .swiper-pagination {
+    bottom: 0 !important; /* Move dots to the bottom edge of the container */
+}
+
+.modal-image-container .swiper-pagination-bullet-active {
+    background: #35538e; /* Theme blue */
+}
+
+/* Make dots larger and spaced out */
+.modal-image-container .swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    margin: 0 8px !important;
 }
 
 .modal.is-gallery-modal .modal-content {
@@ -564,6 +614,25 @@ img {
 
 .btn-blue::after {
     background: #00BFFF;
+}
+
+/* Disabled State */
+.btn.bd-disabled {
+    background: #fff !important;
+    color: #aeaeae !important;
+    border-color: #aeaeae !important;
+    pointer-events: none;
+    cursor: default;
+}
+
+.btn.bd-disabled::after {
+    display: none;
+}
+
+.btn.bd-disabled .arrow,
+.btn.bd-disabled .arrow::before,
+.btn.bd-disabled .arrow::after {
+    background-color: #aeaeae !important;
 }
 
 /* Arrow Colors syncing with text */
@@ -1186,4 +1255,125 @@ h2.unified-h2::after {
     .blog-item-thumb {
         height: 180px;
     }
+}
+
+/* ==========================================================================
+   Content Lists (Subpages)
+   ========================================================================== */
+.content-container ul:not(.gallery):not(.workList):not(.gallery__tagbox),
+.blog-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2em 0;
+}
+
+.content-container ul:not(.gallery):not(.workList):not(.gallery__tagbox) > li,
+.blog-body ul > li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 1.3em;
+    background: url('images/icon_list.png') no-repeat left 0.4em;
+}
+
+/* ==========================================================================
+   Form Styles (Mail Page / General Forms)
+   ========================================================================== */
+
+/* Form wrappers and layout */
+.content-container form {
+    margin-top: 20px;
+}
+
+.content-container form p {
+    margin-bottom: 20px;
+}
+
+/* Base Input Styles */
+.content-container input[type="text"],
+.content-container input[type="email"],
+.content-container input[type="tel"],
+.content-container input[type="url"],
+.content-container textarea,
+.content-container select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fafafa;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Textarea specific */
+.content-container textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Focus State */
+.content-container input[type="text"]:focus,
+.content-container input[type="email"]:focus,
+.content-container input[type="tel"]:focus,
+.content-container textarea:focus,
+.content-container select:focus {
+    outline: none;
+    border-color: #35538e;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(53, 83, 142, 0.2);
+}
+
+/* Labels */
+.content-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Submit Button */
+.content-container input[type="submit"],
+.content-container button[type="submit"] {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #35538e;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.content-container input[type="submit"]:hover,
+.content-container button[type="submit"]:hover {
+    background-color: #2e558f;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Table layout forms */
+.content-container table.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.content-container table.form-table th,
+.content-container table.form-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.content-container table.form-table th {
+    width: 30%;
+    text-align: left;
+    font-weight: bold;
+    background-color: #fcfcfc;
 }

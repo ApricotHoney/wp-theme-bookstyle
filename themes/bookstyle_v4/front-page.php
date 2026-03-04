@@ -102,7 +102,33 @@
 
                         <!-- Info (Hidden on shelf, generally for modal) -->
                         <div class="cover-meta" style="display:none;">
+                            <div class="cover-images-data">
+                                <?php
+                                $images = array();
+                                if (has_post_thumbnail()) {
+                                    $images[] = wp_get_attachment_url(get_post_thumbnail_id());
+                                }
+                                if (function_exists('get_field')) {
+                                    // ACF Free: Check up to 3 individual image fields
+                                    for ($i = 1; $i <= 3; $i++) {
+                                        $sub_img = get_field('sub_image_' . $i);
+                                        if ($sub_img) {
+                                            // Handle case where return format is Array or URL
+                                            if (is_array($sub_img) && isset($sub_img['url'])) {
+                                                $images[] = $sub_img['url'];
+                                            } elseif (is_string($sub_img)) {
+                                                $images[] = $sub_img;
+                                            }
+                                        }
+                                    }
+                                }
+                                echo esc_html(json_encode($images));
+                                ?>
+                            </div>
                             <div class="cover-title"><?php the_title(); ?></div>
+                            <div class="cover-commercial-url">
+                                <?php echo esc_url(get_post_meta(get_the_ID(), '商用利用URL', true)); ?>
+                            </div>
                             <div class="cover-date"><?php the_time('Y/m/d'); ?></div>
                             <div class="cover-tags">
                                 <?php
