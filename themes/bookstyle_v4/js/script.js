@@ -136,4 +136,62 @@ jQuery(document).ready(function ($) {
             $catImage.removeClass('is-leaving-animation');
         });
     });
+
+    // ==========================================
+    // Page Transition Animation
+    // ==========================================
+    // Trigger fade-in on load
+    $(window).on('load', function () {
+        $('body').addClass('is-loaded');
+        $('#wrapper').addClass('page-transition');
+    });
+    // Fallback if load event already fired or takes too long
+    setTimeout(function () {
+        $('body').addClass('is-loaded');
+        $('#wrapper').addClass('page-transition');
+    }, 500);
+
+    // Trigger fade-out on internal links
+    $('a').on('click', function (e) {
+        var href = $(this).attr('href');
+        var target = $(this).attr('target');
+
+        // Skip links that are for lightbox, anchors, tel/mailto, or external/blank target
+        if ($(this).hasClass('lightbox') ||
+            !href ||
+            href.indexOf('#') === 0 ||
+            href.indexOf('tel:') === 0 ||
+            href.indexOf('mailto:') === 0 ||
+            target === '_blank') {
+            return;
+        }
+
+        // Check if internal (simplistic check: starts with '/', '.' or domain)
+        var isInternal = href.indexOf(window.location.hostname) > -1 || href.indexOf('/') === 0 || href.indexOf('.') === 0;
+
+        if (isInternal) {
+            e.preventDefault();
+
+            // Un-animate
+            $('body').removeClass('is-loaded');
+
+            setTimeout(function () {
+                window.location.href = href;
+            }, 400); // slightly before CSS transition finishes
+        }
+    });
+
+    // ==========================================
+    // SP Hamburger Menu Toggle
+    // ==========================================
+    $('.hamburger').on('click', function () {
+        $(this).toggleClass('is-active');
+        $('.sp-menu-overlay').toggleClass('is-active');
+        if ($(this).hasClass('is-active')) {
+            $('body').css('overflow', 'hidden'); // Prevent background scrolling
+        } else {
+            $('body').css('overflow', '');
+        }
+    });
+
 });

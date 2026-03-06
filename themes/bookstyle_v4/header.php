@@ -11,13 +11,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico">
     <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
     <div id="wrapper">
 
-        <!-- Sidebar -->
+        <!-- SP Header -->
+        <header class="sp-header">
+            <h1 class="sp-header-title"><a href="<?php echo home_url('/'); ?>">Book Style</a></h1>
+
+            <?php if (is_front_page() || is_home()): ?>
+                <!-- SP Search (Only on TOP) -->
+                <div class="sp-header-search">
+                    <form role="search" method="get" action="<?php echo home_url('/'); ?>">
+                        <input type="text" name="s" placeholder="ブックカバー検索" value="<?php echo get_search_query(); ?>">
+                    </form>
+                </div>
+            <?php endif; ?>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- SP Menu Overlay -->
+        <div class="sp-menu-overlay">
+            <nav class="sp-menu-nav">
+                <?php wp_nav_menu(array(
+                    'theme_location' => 'gMenu',
+                    'container' => false,
+                    'menu_class' => 'sp-menu-list',
+                    'fallback_cb' => false
+                )); ?>
+                <?php if (!has_nav_menu('gMenu')): ?>
+                    <ul class="sp-menu-list">
+                        <li><a href="<?php echo home_url('/'); ?>">HOME</a></li>
+                        <li><a href="<?php echo home_url('/about/'); ?>">ABOUT</a></li>
+                        <li><a href="<?php echo home_url('/works/'); ?>">WORKS</a></li>
+                        <li><a href="<?php echo home_url('/gallery/'); ?>">GALLERY</a></li>
+                        <li><a href="<?php echo home_url('/blog/'); ?>">BLOG</a></li>
+                        <li><a href="<?php echo home_url('/howto/'); ?>">HOWTO</a></li>
+                        <li><a href="<?php echo home_url('/mail/'); ?>">MAIL</a></li>
+                    </ul>
+                <?php endif; ?>
+            </nav>
+            <?php if (!is_front_page() && !is_home()): ?>
+                <div style="margin-top:20px; text-align:center;">
+                    <a href="<?php echo home_url('/'); ?>"
+                        style="display:inline-block; padding:10px 20px; background:#6AACB8; color:#fff; border-radius:30px; text-decoration:none; font-size:14px;">カバーを探す(TOPへ)</a>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <!-- Sidebar (Desktop) -->
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <a href="<?php echo home_url('/'); ?>" class="logo-box">

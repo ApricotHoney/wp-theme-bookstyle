@@ -202,7 +202,8 @@ function bookstyle_v4_search_filter($query)
     if ($query->is_home() || $query->is_archive() || $query->is_search()) {
 
         // Blog Archive specific logic
-        if ($query->is_post_type_archive('blog') || is_page('blog') || $query->get('post_type') === 'blog') {
+        if ($query->is_post_type_archive('blog') || is_page('blog') || $query->get('post_type') === 'blog' || $query->is_tax('blog_category') || $query->is_tax('blog_tag')) {
+            $query->set('post_type', 'blog');
             $query->set('posts_per_page', 9);
             return; // Skip other filters if it's blog
         }
