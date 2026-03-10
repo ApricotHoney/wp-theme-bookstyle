@@ -31,12 +31,12 @@
                 <div class="terms-check">
                     <label><input type="checkbox" id="modal-terms-checkbox"> <a
                             href="<?php echo esc_url(home_url('/about#ToS')); ?>"
-                            target="_blank" rel="noopener noreferrer" class="bd-link">利用規約</a>に同意する</label>
+                            target="_blank" rel="noopener noreferrer" class="bd-link">利用規約</a>に同意し使用する</label>
                 </div>
                 <div class="action-buttons">
-                    <a href="#" id="modal-btn-personal" class="btn btn-green bd-disabled">個人利用で使用する <span
+                    <a href="#" id="modal-btn-personal" class="btn btn-green bd-disabled">個人利用する <span
                             class="arrow"></span></a>
-                    <a href="#" id="modal-btn-commercial" class="btn btn-blue bd-disabled">商用利用で使用する <span
+                    <a href="#" id="modal-btn-commercial" class="btn btn-blue bd-disabled">商用利用する <span
                             class="arrow"></span></a>
                 </div>
             </div>
@@ -51,8 +51,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var searchForm = document.querySelector('.search-form');
-        if (searchForm) {
+        var searchForms = document.querySelectorAll('.search-form');
+        searchForms.forEach(function(searchForm) {
             var inputs = searchForm.querySelectorAll('select, input[type="radio"]');
             inputs.forEach(function (input) {
                 input.addEventListener('change', function () {
@@ -62,9 +62,9 @@
                     searchForm.submit();
                 });
             });
-        }
+        });
 
- // Modal Terms Checkbox Logic
+        // Modal Terms Checkbox Logic
         const termsCheckbox = document.getElementById('modal-terms-checkbox');
         const btnPersonal = document.getElementById('modal-btn-personal');
         const btnCommercial = document.getElementById('modal-btn-commercial');
@@ -73,7 +73,7 @@
             // Initial state (in case browser remembers checkbox state on reload)
             toggleButtons(termsCheckbox.checked);
 
-            termsCheckbox.addEventListener('change', function() {
+            termsCheckbox.addEventListener('change', function () {
                 toggleButtons(this.checked);
             });
 

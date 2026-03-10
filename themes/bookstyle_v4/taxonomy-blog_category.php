@@ -10,8 +10,11 @@
 
         <div class="blog-category-nav">
             <p class="blog-category-heading">カテゴリ</p>
+            
+            <?php $current_term = is_tax('blog_category') ? get_queried_object()->slug : ''; ?>
+
+            <!-- PC/Tablet View: List -->
             <ul class="blog-category-list">
-                <?php $current_term = is_tax('blog_category') ? get_queried_object()->slug : ''; ?>
                 <li><a href="<?php echo esc_url(get_post_type_archive_link('blog')); ?>"
                         class="<?php echo empty($current_term) ? 'is-active' : ''; ?>">すべて</a></li>
                 <li><a href="<?php echo esc_url(get_term_link('information', 'blog_category')); ?>"
@@ -27,6 +30,18 @@
                 <li><a href="<?php echo esc_url(get_term_link('hobby', 'blog_category')); ?>"
                         class="<?php echo ($current_term === 'hobby') ? 'is-active' : ''; ?>">本と手仕事</a></li>
             </ul>
+
+            <!-- SP View: Select -->
+            <div class="blog-category-select-wrapper sp-only">
+                <select class="blog-category-select" onchange="if(this.value) window.location.href=this.value;">
+                    <option value="<?php echo esc_url(get_post_type_archive_link('blog')); ?>" <?php selected(empty($current_term), true); ?>>すべて</option>
+                    <option value="<?php echo esc_url(get_term_link('information', 'blog_category')); ?>" <?php selected($current_term === 'information', true); ?>>新作/お知らせ</option>
+                    <option value="<?php echo esc_url(get_term_link('bookcover_guide', 'blog_category')); ?>" <?php selected($current_term === 'bookcover_guide', true); ?>>ブックカバー活用ガイド</option>
+                    <option value="<?php echo esc_url(get_term_link('design-note', 'blog_category')); ?>" <?php selected($current_term === 'design-note', true); ?>>デザインの裏側/制作日記</option>
+                    <option value="<?php echo esc_url(get_term_link('paid-sale', 'blog_category')); ?>" <?php selected($current_term === 'paid-sale', true); ?>>商用利用について</option>
+                    <option value="<?php echo esc_url(get_term_link('hobby', 'blog_category')); ?>" <?php selected($current_term === 'hobby', true); ?>>本と手仕事</option>
+                </select>
+            </div>
         </div>
 
         <div class="blog-list">

@@ -22,21 +22,67 @@
         <header class="sp-header">
             <h1 class="sp-header-title"><a href="<?php echo home_url('/'); ?>">Book Style</a></h1>
 
-            <?php if (is_front_page() || is_home()): ?>
-                <!-- SP Search (Only on TOP) -->
-                <div class="sp-header-search">
-                    <form role="search" method="get" action="<?php echo home_url('/'); ?>">
-                        <input type="text" name="s" placeholder="ブックカバー検索" value="<?php echo get_search_query(); ?>">
-                    </form>
-                </div>
-            <?php endif; ?>
-
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </header>
+
+        <?php 
+            $is_blog = is_post_type_archive('blog') || is_tax('blog_category') || is_singular('blog');
+            $show_sp_search = !$is_blog && (is_front_page() || is_home() || is_category() || is_search() || is_archive() || get_query_var('color') || isset($_GET['color']) || isset($_GET['cat']) || isset($_GET['sort']));
+            if ($show_sp_search): 
+        ?>
+            <!-- SP Advanced Search -->
+            <div class="sp-advanced-search">
+                <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
+                    <div class="sp-search-flex">
+                        <div class="search-item">
+                            <select name="cat" class="search-select">
+                                <option value="0">ジャンルをえらぶ</option>
+                                <?php
+                                $categories = get_categories(array('orderby' => 'name', 'order' => 'ASC'));
+                                foreach ($categories as $category) {
+                                    $label = !empty($category->description) ? $category->description : $category->name;
+                                    $selected = (get_query_var('cat') == $category->term_id) ? 'selected' : '';
+                                    echo '<option value="' . esc_attr($category->term_id) . '" ' . $selected . '>' . esc_html($label) . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="search-item">
+                            <select name="sort" class="search-select">
+                                <option value="">並び替え</option>
+                                <option value="new" <?php selected(get_query_var('sort'), 'new'); ?>>新しいもの順</option>
+                                <option value="old" <?php selected(get_query_var('sort'), 'old'); ?>>古いもの順</option>
+                                <option value="rand" <?php selected(get_query_var('sort'), 'rand'); ?>>ランダム</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sp-color-search">
+                        <span class="search-label sp-color-label">色でさがす</span>
+                        <div class="color-dots sp-color-dots">
+                            <?php
+                            $colors = array('brown'=>'Brown', 'blue'=>'Blue', 'green'=>'Green', 'red'=>'Red', 'white'=>'White', 'colorful'=>'Colorful');
+                            $current_color = get_query_var('color');
+                            foreach ($colors as $slug => $label):
+                                $checked = ($current_color === $slug) ? 'checked' : '';
+                            ?>
+                                <label class="color-dot-wrapper">
+                                    <input type="radio" name="color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
+                                    <span class="color-dot color-<?php echo esc_attr($slug); ?>" title="<?php echo esc_attr($label); ?>"></span>
+                                </label>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <button type="submit" class="search-submit" style="display:none;">Search</button>
+                    <div style="margin-top: 5px; text-align: left;">
+                        <a href="<?php echo home_url('/'); ?>" style="font-size: 13px; color: #666; text-decoration: underline;">検索条件をクリア</a>
+                    </div>
+                </form>
+            </div>
+        <?php endif; ?>
 
         <!-- SP Menu Overlay -->
         <div class="sp-menu-overlay">
@@ -59,12 +105,11 @@
                     </ul>
                 <?php endif; ?>
             </nav>
-            <?php if (!is_front_page() && !is_home()): ?>
-                <div style="margin-top:20px; text-align:center;">
-                    <a href="<?php echo home_url('/'); ?>"
-                        style="display:inline-block; padding:10px 20px; background:#6AACB8; color:#fff; border-radius:30px; text-decoration:none; font-size:14px;">カバーを探す(TOPへ)</a>
-                </div>
-            <?php endif; ?>
+
+            <div class="sp-menu-social">
+                <a href="https://twitter.com/book_style_neri" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/icon_x.png" alt="X"></a>
+                <a href="https://instagram.com/neri_bookstyle/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/icon_instagram.png" alt="Instagram"></a>
+            </div>
         </div>
 
         <!-- Sidebar (Desktop) -->
@@ -141,7 +186,6 @@
                                 'brown' => 'Brown',
                                 'blue' => 'Blue',
                                 'green' => 'Green',
-                                'yellow' => 'Yellow',
                                 'red' => 'Red',
                                 'white' => 'White',
                                 'colorful' => 'Colorful'
@@ -161,7 +205,7 @@
 
                     <button type="submit" class="search-submit" style="display:none;">Search</button>
 
-                    <div style="margin-top: 10px; text-align: right;">
+                    <div style="margin-top: 10px; text-align: left;">
                         <a href="<?php echo home_url('/'); ?>"
                             style="font-size: 12px; color: #999; text-decoration: underline;">検索条件をクリア</a>
                     </div>

@@ -144,11 +144,15 @@ jQuery(document).ready(function ($) {
     $(window).on('load', function () {
         $('body').addClass('is-loaded');
         $('#wrapper').addClass('page-transition');
+        setTimeout(function(){ $('#wrapper').removeClass('page-transition'); }, 700);
     });
     // Fallback if load event already fired or takes too long
     setTimeout(function () {
-        $('body').addClass('is-loaded');
-        $('#wrapper').addClass('page-transition');
+        if (!$('body').hasClass('is-loaded')) {
+            $('body').addClass('is-loaded');
+            $('#wrapper').addClass('page-transition');
+            setTimeout(function(){ $('#wrapper').removeClass('page-transition'); }, 700);
+        }
     }, 500);
 
     // Trigger fade-out on internal links
