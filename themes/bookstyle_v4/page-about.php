@@ -64,6 +64,7 @@ get_header(); ?>
                     style="width: 100%; height: auto; display: block;">
             </div>
 
+            <!-- 旧利用規約 ここから
             <section class="unified-section" id="ToS">
                 <h2 class="unified-h2">利用規約</h2>
                 <p class="ta-c mb30">利用規約をよく読み、ご理解した上でブックカバーをお使いください。</p>
@@ -117,9 +118,109 @@ get_header(); ?>
                         <li>学校・図書館等の公共機関でプレゼントとして利用・配布</li>
                     </ul>
                 </div>
+            </section>
+            旧利用規約 ここまで -->
+
+            <section class="unified-section" id="ToS">
+                <h2 class="unified-h2">利用規約</h2>
+                <p class="ta-c mb30">本サイトのデザインをご利用いただく際は、以下の規約を必ずお読みください。ご利用いただいた時点で、本規約に同意したものとみなします。</p>
+
+                <div class="term-block">
+                    <h3 class="icon-heading">1. 著作権について</h3>
+                    <p>
+                        本サイトに掲載されているすべてのブックカバーデザイン、データ、写真、テキスト等の著作権は「Book
+                        Style」および「ねり」に帰属します。ライセンスの購入は「利用権」の許諾であり、著作権を譲渡するものではありません。
+                    </p>
+                </div>
 
                 <div class="term-block mt30">
-                    <h3 class="icon-heading">よくある質問</h3>
+                    <h3 class="icon-heading">2. 利用区分の詳細</h3>
+                    <p>用途に合わせて、以下の2つのプランがあります。</p>
+                    <div class="table-wrap mt20">
+                        <table class="tos-table">
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>無料版（個人利用）</th>
+                                    <th>商用ライセンス（有料版）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>利用対象</th>
+                                    <td>個人、友人へのプレゼント、公共機関（学校・図書館等）</td>
+                                    <td>法人、個人事業主、収益を伴う活動</td>
+                                </tr>
+                                <tr>
+                                    <th>クレジット表記</th>
+                                    <td>必須（サイト名やURLの記載）</td>
+                                    <td>不要（任意）</td>
+                                </tr>
+                                <tr>
+                                    <th>許諾範囲</th>
+                                    <td>非営利目的のみ</td>
+                                    <td>ビジネス・営利目的を含む利用</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="term-block mt30">
+                    <h3 class="icon-heading">3. クレジット表記の要否について</h3>
+                    <p>本サイトのデザインを利用する際のクレジット表記（サイト名やURLの記載）については、以下の通りです。</p>
+
+                    <div class="tos-credit-box mt20">
+                        <h4>無料版（個人利用）の場合：表記必須</h4>
+                        <ul>
+                            <li><strong>SNSでの利用：</strong>投稿内にサイト名「Book Style」またはサイトURL（http://bookstyle.xyz）を含めてください。
+                            </li>
+                            <li><strong>物理的な利用：</strong>可能な範囲で、当サイトのデザインである旨を周囲に伝えていただけると幸いです。</li>
+                        </ul>
+                    </div>
+
+                    <div class="tos-credit-box mt20">
+                        <h4>商用ライセンス（有料版）の場合：表記不要</h4>
+                        <ul>
+                            <li>ライセンス購入者は、クレジット表記なしで自由にご利用いただけます。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="term-block mt30">
+                    <h3 class="icon-heading">4. 商用利用の許諾範囲（OK事例）</h3>
+                    <p>商用ライセンスをご購入いただいた場合、デザインを「装飾や背景などの演出の一部」として、以下の用途にご利用いただけます。</p>
+                    <ul class="mt10 tos-list">
+                        <li><strong>撮影用背景・小物:</strong> 写真館、フォトスタジオ、YouTube等の動画撮影における背景や装飾小物としての利用。</li>
+                        <li><strong>広告・PR制作物:</strong> 企業やサービスのWebバナー、SNS広告、チラシ等のデザインパーツとしての利用。</li>
+                        <li><strong>デジタルコンテンツ:</strong> Webメディア、ブログ、ニュースサイト等の記事内アイキャッチ画像としての利用。</li>
+                        <li><strong>店舗装飾:</strong> カフェや書店等における、ディスプレイやインテリアとしての利用。</li>
+                    </ul>
+                </div>
+
+                <div class="term-block mt30">
+                    <h3 class="icon-heading">5. デザインを主目的とした利用の制限と禁止事項</h3>
+                    <p>本サイトのデザインそのものが「商品価値の主体（売り）」となる利用は、無料・有料を問わず一律禁止いたします。</p>
+                    <ul class="mt10 tos-list">
+                        <li><strong>素材そのものの配布・販売:</strong> データをそのまま、あるいは軽微な加工のみで素材として再配布・販売する行為。</li>
+                        <li><strong>デザインを主役とした商品化:</strong>
+                            本デザインをそのままプリントし、ブックカバー、ポストカード、ラッピングペーパー等の「独立した商品」として販売・配布する行為。</li>
+                        <li><strong>類似品の制作:</strong> 当サイトのアイデアやデザインをトレース・模倣した商品の販売。</li>
+                        <li><strong>ロゴ・商標登録:</strong> デザインをロゴの一部として使用し、商号や商標を登録する行為。</li>
+                        <li><strong>公序良俗に反する利用:</strong> アダルト、違法活動、誹謗中傷を目的とした媒体での利用。</li>
+                    </ul>
+                </div>
+
+                <div class="term-block mt30">
+                    <h3 class="icon-heading">6. 免責事項</h3>
+                    <ul class="mt10 tos-list">
+                        <li>素材の利用によって生じたいかなる損害についても、Book Styleは一切の責任を負いません。</li>
+                        <li>サイト内の情報は予告なく変更、削除、公開の中断を行う場合があります。これに伴う損害についても責任を負いかねます。</li>
+                    </ul>
+                </div>
+
+                <div class="term-block mt30">
+                    <h2 class="unified-h2">よくある質問</h2>
                     <ul>
                         <li>Q.フリーペーパーやその他書籍の表紙として利用したい<br>
                             A.禁止事項に違反しない限り、利用可能です。<a href="<?php echo home_url('/contact'); ?>"
@@ -132,6 +233,7 @@ get_header(); ?>
                     </ul>
                 </div>
             </section>
+
             <section class="unified-section">
                 <h2 class="unified-h2">プライバシーポリシー</h2>
                 <p class="ta-c mb30">Book Style（以下「当サイト」）は、以下のとおり個人情報保護方針を定め、個人情報保護の仕組みを構築し、個人情報の保護を推進致します。</p>

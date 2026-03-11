@@ -57,15 +57,17 @@ jQuery(document).ready(function ($) {
         // Update Personal Use button
         var personalUrl = 'https://bookstyle.xyz/cover_personal/BC_' + title + '.png';
         $('#modal-btn-personal').attr('href', personalUrl);
-        $('#modal-btn-personal').attr('onclick', "ga('send', 'event', 'bc_count', 'downlode', 'BC_" + title + "');");
+        $('#modal-btn-personal').attr('onclick', "dataLayer.push({'event': 'download_bc', 'bc_title': 'BC_" + title + "'});");
 
         // Update Commercial Use button
         if (commercialUrl) {
             $('#modal-btn-commercial').attr('href', commercialUrl).show();
             $('#modal-btn-commercial').attr('target', '_blank').attr('rel', 'noopener noreferrer');
+            $('#modal-btn-commercial').attr('onclick', "dataLayer.push({'event': 'commercialuse_bc', 'bc_title': 'BC_" + title + "'});");
         } else {
             $('#modal-btn-commercial').hide();
             $('#modal-btn-commercial').attr('href', '#'); // Reset
+            $('#modal-btn-commercial').removeAttr('onclick');
         }
 
         // Check if this is a gallery item

@@ -21,6 +21,12 @@
                             <?php the_content(); ?>
                         </div>
 
+                        <?php if ( is_active_sidebar( 'post-bottom-widget' ) ) : ?>
+                            <div class="post-bottom-widgets" style="margin-top: 40px; text-align: center;">
+                                <?php dynamic_sidebar( 'post-bottom-widget' ); ?>
+                            </div>
+                        <?php endif; ?>
+
                         <footer class="entry-footer">
                             <?php the_tags('<div class="tags-links">#', ' #', '</div>'); ?>
                         </footer>

@@ -32,6 +32,12 @@
                                 <?php the_content(); ?>
                             </div>
 
+                            <?php if ( is_active_sidebar( 'post-bottom-widget' ) ) : ?>
+                                <div class="post-bottom-widgets" style="margin-top: 40px; text-align: center;">
+                                    <?php dynamic_sidebar( 'post-bottom-widget' ); ?>
+                                </div>
+                            <?php endif; ?>
+
                             <footer class="entry-footer"
                                 style="margin-top: 50px; border-top: 1px dashed #ccc; padding-top: 20px;">
                                 <?php

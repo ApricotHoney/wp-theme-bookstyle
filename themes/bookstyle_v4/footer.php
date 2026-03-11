@@ -1,5 +1,17 @@
 </div><!-- #wrapper -->
 
+<?php if ( is_active_sidebar( 'before-footer-widget' ) ) : ?>
+    <div class="before-footer-widgets l_wrap" style="padding: 40px 0; text-align: center; margin-bottom: 0;">
+        <?php dynamic_sidebar( 'before-footer-widget' ); ?>
+    </div>
+<?php endif; ?>
+
+<?php if ( is_active_sidebar( 'right-floating-widget' ) ) : ?>
+    <div class="right-floating-widgets">
+        <?php dynamic_sidebar( 'right-floating-widget' ); ?>
+    </div>
+<?php endif; ?>
+
 <footer id="footer" class="footer">
     <!-- Cat image (sitting on top of footer) -->
     <img src="<?php echo get_template_directory_uri(); ?>/images/hatchan.png" alt="BookStyle Cat" class="cat-image">

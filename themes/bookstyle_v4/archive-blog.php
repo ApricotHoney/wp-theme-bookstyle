@@ -52,6 +52,12 @@
                     <article class="blog-item">
                         <a href="<?php the_permalink(); ?>" class="blog-item-inner">
                             <div class="blog-item-thumb">
+                                <?php
+                                $post_date = get_the_time('U');
+                                $month_ago = strtotime('-1 month');
+                                if ($post_date > $month_ago): ?>
+                                    <span class="newicon">New</span>
+                                <?php endif; ?>
                                 <?php if (has_post_thumbnail()): ?>
                                     <?php the_post_thumbnail('medium'); ?>
                                 <?php else: ?>

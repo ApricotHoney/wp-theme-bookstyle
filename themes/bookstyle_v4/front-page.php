@@ -77,7 +77,13 @@
                     ?>
                     <article class="cover-item <?php echo esc_attr($class_names); ?>">
                         <!-- Cover Image -->
-                        <div class="cover-image">
+                        <div class="cover-image" style="position: relative;">
+                            <?php
+                            $post_date = get_the_time('U');
+                            $month_ago = strtotime('-1 month');
+                            if ($post_date > $month_ago): ?>
+                                <span class="newicon">New</span>
+                            <?php endif; ?>
                             <?php if (has_post_thumbnail()): ?>
                                 <a href="<?php echo esc_url(wp_get_attachment_url(get_post_thumbnail_id())); ?>" class="lightbox"
                                     data-id="<?php the_ID(); ?>">

@@ -262,3 +262,35 @@ function redirect_tumblr_to_internal_blog($sorted_menu_items, $args)
     return $sorted_menu_items;
 }
 add_filter('wp_nav_menu_objects', 'redirect_tumblr_to_internal_blog', 10, 2);
+
+// Register Widget Areas
+function bookstyle_v4_widgets_init() {
+    register_sidebar(array(
+        'name'          => '各記事の本文直下',
+        'id'            => 'post-bottom-widget',
+        'description'   => '記事や固定ページの本文直下に表示されるウィジェットエリアです。',
+        'before_widget' => '<div id="%1$s" class="widget-area post-bottom-widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+    register_sidebar(array(
+        'name'          => 'フッターの直前',
+        'id'            => 'before-footer-widget',
+        'description'   => '全ページのフッターのすぐ上に表示されるウィジェットエリアです。',
+        'before_widget' => '<div id="%1$s" class="widget-area before-footer-widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+    register_sidebar(array(
+        'name'          => '右側の固定スペース',
+        'id'            => 'right-floating-widget',
+        'description'   => '画面右端に固定表示されるウィジェットエリアです。PC等の幅が広い画面でのみ表示されます。',
+        'before_widget' => '<div id="%1$s" class="widget-area right-floating-widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+}
+add_action('widgets_init', 'bookstyle_v4_widgets_init');

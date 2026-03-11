@@ -19,6 +19,12 @@
                     <section class="unified-section">
                         <?php the_content(); ?>
                     </section>
+
+                    <?php if ( is_active_sidebar( 'post-bottom-widget' ) ) : ?>
+                        <div class="post-bottom-widgets unified-section" style="margin-top: 40px; text-align: center;">
+                            <?php dynamic_sidebar( 'post-bottom-widget' ); ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             <?php endwhile; endif; ?>
 

@@ -37,7 +37,13 @@ get_header(); ?>
                                 <p class="gallery__date ta-r"><?php the_time('Y/m/d'); ?></p>
 
                                 <?php if (has_post_thumbnail()): ?>
-                                    <div class="gallery__photo">
+                                    <div class="gallery__photo" style="position: relative;">
+                                        <?php
+                                        $post_date = get_the_time('U');
+                                        $month_ago = strtotime('-1 month');
+                                        if ($post_date > $month_ago): ?>
+                                            <span class="newicon">New</span>
+                                        <?php endif; ?>
                                         <a href="<?php echo esc_url(wp_get_attachment_url(get_post_thumbnail_id())); ?>"
                                             class="lightbox">
                                             <?php the_post_thumbnail('gallery-thumbnail'); ?>
