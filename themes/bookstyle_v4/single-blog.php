@@ -32,9 +32,9 @@
                                 <?php the_content(); ?>
                             </div>
 
-                            <?php if ( is_active_sidebar( 'post-bottom-widget' ) ) : ?>
+                            <?php if (is_active_sidebar('post-bottom-widget')): ?>
                                 <div class="post-bottom-widgets" style="margin-top: 40px; text-align: center;">
-                                    <?php dynamic_sidebar( 'post-bottom-widget' ); ?>
+                                    <?php dynamic_sidebar('post-bottom-widget'); ?>
                                 </div>
                             <?php endif; ?>
 
@@ -49,7 +49,7 @@
                             </footer>
 
                             <div class="post-navigation"
-                                style="margin-top: 40px; border-top: 1px dashed #ccc; padding-top: 30px;">
+                                style="padding-top: 30px;">
                                 <div class="nav-links"
                                     style="display: flex; justify-content: space-between; align-items: center;">
                                     <div class="nav-prev" style="flex: 1; text-align: left;">
@@ -108,6 +108,21 @@
                                 </li>
                                 <li><a href="<?php echo esc_url(get_term_link('hobby', 'blog_category')); ?>">本と手仕事</a></li>
                             </ul>
+                            
+                            <!-- SP Dropdown Navigation -->
+                            <div class="blog-category-select-wrapper">
+                                <div class="search-item">
+                                    <select class="search-select" onchange="if(this.value) location.href=this.value;">
+                                        <option value="">カテゴリをえらぶ</option>
+                                        <option value="<?php echo esc_url(get_post_type_archive_link('blog')); ?>">すべて</option>
+                                        <option value="<?php echo esc_url(get_term_link('information', 'blog_category')); ?>">新作/お知らせ</option>
+                                        <option value="<?php echo esc_url(get_term_link('bookcover_guide', 'blog_category')); ?>">ブックカバー活用ガイド</option>
+                                        <option value="<?php echo esc_url(get_term_link('design-note', 'blog_category')); ?>">デザインの裏側/制作日記</option>
+                                        <option value="<?php echo esc_url(get_term_link('paid-sale', 'blog_category')); ?>">商用利用について</option>
+                                        <option value="<?php echo esc_url(get_term_link('hobby', 'blog_category')); ?>">本と手仕事</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </aside>
                 </div>

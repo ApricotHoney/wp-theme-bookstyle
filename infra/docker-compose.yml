@@ -12,7 +12,7 @@ services:
       - db_data:/var/lib/mysql
 
   wordpress:
-    image: wordpress:6.9
+    image: wordpress:6.5.3-php8.2
     container_name: bookstyle_wp
     restart: always
     depends_on:

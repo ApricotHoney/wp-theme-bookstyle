@@ -46,6 +46,34 @@
             $show_sp_search = !$is_blog && (is_front_page() || is_home() || is_category() || is_search() || is_archive() || get_query_var('color') || isset($_GET['color']) || isset($_GET['cat']) || isset($_GET['sort']));
             if ($show_sp_search): 
         ?>
+            <!-- SP News Section -->
+            <div class="sp-news-section sp-only">
+                <span class="search-label">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/icon_news.png" alt="News" style="width:16px; vertical-align:middle;"> 更新情報
+                </span>
+                <?php
+                $news_query = new WP_Query(array(
+                    'post_type'      => 'blog',
+                    'posts_per_page' => 1,
+                    'post_status'    => 'publish',
+                ));
+                if ($news_query->have_posts()) :
+                    while ($news_query->have_posts()) : $news_query->the_post();
+                        $news_title = get_the_title();
+                        ?>
+                        <div class="news-item">
+                            <div class="news-date"><?php echo get_the_time('Y/m/d'); ?></div>
+                            <div class="news-title">
+                                <a href="<?php the_permalink(); ?>"><?php echo esc_html($news_title); ?></a>
+                            </div>
+                        </div>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
+
             <!-- SP Advanced Search -->
             <div class="sp-advanced-search">
                 <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
@@ -121,6 +149,7 @@
             <div class="sp-menu-social">
                 <a href="https://twitter.com/book_style_neri" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/icon_x.png" alt="X"></a>
                 <a href="https://instagram.com/neri_bookstyle/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/icon_instagram.png" alt="Instagram"></a>
+                <a href="https://bookstyle.booth.pm/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/icon_shopping.png" alt="BOOTH"></a>
             </div>
         </div>
 
@@ -153,6 +182,33 @@
                     </ul>
                 <?php endif; ?>
             </nav>
+
+            <div class="sidebar-news">
+                <span class="search-label">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/icon_news.png" alt="News" style="width:16px; vertical-align:middle;"> 更新情報
+                </span>
+                <?php
+                $news_query = new WP_Query(array(
+                    'post_type'      => 'blog',
+                    'posts_per_page' => 1,
+                    'post_status'    => 'publish',
+                ));
+                if ($news_query->have_posts()) :
+                    while ($news_query->have_posts()) : $news_query->the_post();
+                        $news_title = get_the_title();
+                        ?>
+                        <div class="news-item">
+                            <div class="news-date"><?php echo get_the_time('Y/m/d'); ?></div>
+                            <div class="news-title">
+                                <a href="<?php the_permalink(); ?>"><?php echo esc_html($news_title); ?></a>
+                            </div>
+                        </div>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
 
             <div class="sidebar-search">
                 <span class="search-label">
@@ -230,5 +286,8 @@
                 <a href="https://instagram.com/neri_bookstyle/" target="_blank"><img
                         src="<?php echo get_template_directory_uri(); ?>/images/icon_instagram.png"
                         alt="Instagram"></a>
+                <a href="https://bookstyle.booth.pm/" target="_blank"><img
+                        src="<?php echo get_template_directory_uri(); ?>/images/icon_shopping.png"
+                        alt="BOOTH"></a>
             </div>
         </aside>

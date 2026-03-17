@@ -36,7 +36,7 @@ get_header(); ?>
                         Book Styleは<span class="marker">無料でブックカバーのデザインをダウンロード</span>できるサイトです。<br>
                         デザインをダウンロードされた時点で、利用規約に同意したものとみなします。<br>
                         下記の「利用規約」をよく読まれた上で正しくご利用ください。<br>
-                        商用利用については<a href="#" class="bd-link">noteを参照</a>ください
+                        商用利用については<a href="#ToS" class="bd-link">利用規約</a>をご覧ください
                     </p>
 
                     <p>
@@ -153,7 +153,7 @@ get_header(); ?>
                                 </tr>
                                 <tr>
                                     <th>クレジット表記</th>
-                                    <td>必須（サイト名やURLの記載）</td>
+                                    <td>可能な限り記載（サイト名やURLの記載）</td>
                                     <td>不要（任意）</td>
                                 </tr>
                                 <tr>
@@ -171,7 +171,7 @@ get_header(); ?>
                     <p>本サイトのデザインを利用する際のクレジット表記（サイト名やURLの記載）については、以下の通りです。</p>
 
                     <div class="tos-credit-box mt20">
-                        <h4>無料版（個人利用）の場合：表記必須</h4>
+                        <h4>無料版（個人利用）の場合：可能な限り記載</h4>
                         <ul>
                             <li><strong>SNSでの利用：</strong>投稿内にサイト名「Book Style」またはサイトURL（http://bookstyle.xyz）を含めてください。
                             </li>
@@ -195,6 +195,7 @@ get_header(); ?>
                         <li><strong>広告・PR制作物:</strong> 企業やサービスのWebバナー、SNS広告、チラシ等のデザインパーツとしての利用。</li>
                         <li><strong>デジタルコンテンツ:</strong> Webメディア、ブログ、ニュースサイト等の記事内アイキャッチ画像としての利用。</li>
                         <li><strong>店舗装飾:</strong> カフェや書店等における、ディスプレイやインテリアとしての利用。</li>
+                        <li><strong>書籍表紙：</strong> 商業出版物の表紙デザインとしての利用。</li>
                     </ul>
                 </div>
 
@@ -204,7 +205,7 @@ get_header(); ?>
                     <ul class="mt10 tos-list">
                         <li><strong>素材そのものの配布・販売:</strong> データをそのまま、あるいは軽微な加工のみで素材として再配布・販売する行為。</li>
                         <li><strong>デザインを主役とした商品化:</strong>
-                            本デザインをそのままプリントし、ブックカバー、ポストカード、ラッピングペーパー等の「独立した商品」として販売・配布する行為。</li>
+                            本デザインをそのままプリントし、ブックカバー、ポストカード、ラッピングペーパー、スマホカバー等の「独立した商品」として販売・配布する行為。</li>
                         <li><strong>類似品の制作:</strong> 当サイトのアイデアやデザインをトレース・模倣した商品の販売。</li>
                         <li><strong>ロゴ・商標登録:</strong> デザインをロゴの一部として使用し、商号や商標を登録する行為。</li>
                         <li><strong>公序良俗に反する利用:</strong> アダルト、違法活動、誹謗中傷を目的とした媒体での利用。</li>
@@ -221,16 +222,56 @@ get_header(); ?>
 
                 <div class="term-block mt30">
                     <h2 class="unified-h2">よくある質問</h2>
-                    <ul>
-                        <li>Q.フリーペーパーやその他書籍の表紙として利用したい<br>
-                            A.禁止事項に違反しない限り、利用可能です。<a href="<?php echo home_url('/contact'); ?>"
-                                class="bd-link">MAILよりお問い合わせください</a></li>
-                        <li>Q.自身のサイト・ブログ等でBook Styleを紹介したい<br>
-                            A.大歓迎です！サイトの画像やブックカバーの画像を引用する場合、その画像がBook Styleのものであることを明示してください。</li>
-                        <li>Q.その他メディアでBook Styleのことを記事として掲載したい<br>
-                            A.基本的にはOKです。記事の内容を確認致しますので、<a href="<?php echo home_url('/contact'); ?>"
-                                class="bd-link">MAILよりお問い合わせ</a>ください。すぐにご返信できない場合もございますので、余裕を持ってご連絡ください。</li>
-                    </ul>
+
+                    <h3 class="icon-heading">1. ライセンスについて</h3>
+                    <div class="tos-credit-box">
+                        <h4>Q. 商用ライセンスを購入すれば、どんなことでも使えますか？</h4>
+                        <p><strong>A.
+                            </strong>基本的にはビジネス用途（広告、バナー、店舗装飾など）にご利用いただけますが、デザインをそのまま「商品」として販売する行為や、ロゴマークとしての登録、公序良俗に反する媒体での利用は禁止しております。詳細は「利用規約」をご確認ください。
+                        </p>
+                    </div>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. 無料版と有料版（商用ライセンス）で、デザイン自体に違いはありますか？</h4>
+                        <p><strong>A. </strong>デザインは同じですが、有料版はより高画質（印刷に適した300dpi相当）なデータを提供しており、クレジット表記も不要となります。</p>
+                    </div>
+
+                    <h3 class="icon-heading">2. 印刷・データ仕様について</h3>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. 印刷すると画像がボヤけてしまいます。</h4>
+                        <p><strong>A.
+                            </strong>無料配布している画像はWeb表示用の解像度となっているため、大判での印刷には適さない場合があります。綺麗に印刷したい場合は、高解像度データが含まれる「有料版」のご購入をお勧めいたします。
+                        </p>
+                    </div>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. データの形式は何ですか？</h4>
+                        <p><strong>A. </strong>基本的にPNG形式で提供しております。</p>
+                    </div>
+
+                    <h3 class="icon-heading">3. 加工・改変について</h3>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. デザインの上に文字を入れたり、色を変えたりしてもいいですか？</h4>
+                        <p><strong>A. </strong>タイトルの文字入れなどの加工は自由に行っていただけます。ただし、元のデザインの意図を大きく損なうような過度な改変はご遠慮ください。</p>
+                    </div>
+
+                    <h3 class="icon-heading">4. 表記・報告について</h3>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. サイト名やリンク（クレジット）の記載は必須ですか？</h4>
+                        <p><strong>A. </strong>無料版をご利用の場合は必ず「Book
+                            Style」の名称またはURLの記載をお願いします。商用ライセンスをご購入いただいた場合は、表記なしでご利用いただけます。</p>
+                    </div>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. 実際に使ったことを報告する必要はありますか？</h4>
+                        <p><strong>A. </strong>必須ではありませんが、SNSなどで「#BookStyle」のハッシュタグをつけてシェアしていただけると、制作者として大変励みになります。</p>
+                    </div>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. 自身のサイト・ブログ等でBook Styleを紹介したい</h4>
+                        <p><strong>A. </strong>大歓迎です！サイトの画像やブックカバーの画像を引用する場合、その画像がBook Styleのものであることを明示してください。</p>
+                    </div>
+                    <div class="tos-credit-box mt20">
+                        <h4>Q. その他メディアでBook Styleのことを記事として掲載したい</h4>
+                        <p><strong>A. </strong>基本的にはOKです。記事の内容を確認致しますので、<a href="<?php echo home_url('/contact'); ?>"
+                                class="bd-link">MAILよりお問い合わせ</a>ください。すぐにご返信できない場合もございますので、余裕を持ってご連絡ください。</p>
+                    </div>
                 </div>
             </section>
 
