@@ -48,9 +48,6 @@
         ?>
             <!-- SP News Section -->
             <div class="sp-news-section sp-only">
-                <span class="search-label">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/icon_news.png" alt="News" style="width:16px; vertical-align:middle;"> 更新情報
-                </span>
                 <?php
                 $news_query = new WP_Query(array(
                     'post_type'      => 'blog',
@@ -60,9 +57,13 @@
                 if ($news_query->have_posts()) :
                     while ($news_query->have_posts()) : $news_query->the_post();
                         $news_title = get_the_title();
+                        $news_date = get_the_time('Y/m/d');
                         ?>
+                        <span class="search-label" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span><img src="<?php echo get_template_directory_uri(); ?>/images/icon_news.png" alt="News" style="width:16px; vertical-align:middle; margin-right:5px;"> 更新情報</span>
+                            <span class="news-date" style="font-weight: normal; font-size: 11px; margin-bottom: 0;"><?php echo $news_date; ?></span>
+                        </span>
                         <div class="news-item">
-                            <div class="news-date"><?php echo get_the_time('Y/m/d'); ?></div>
                             <div class="news-title">
                                 <a href="<?php the_permalink(); ?>"><?php echo esc_html($news_title); ?></a>
                             </div>
@@ -78,14 +79,20 @@
             <div class="sp-advanced-search">
                 <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
                     <div class="sp-search-flex">
+                        <div class="search-item" style="margin-bottom: 10px;">
+                            <label class="commercial-checkbox-label">
+                                <input type="checkbox" name="commercial" value="1" <?php checked(isset($_GET['commercial']) && $_GET['commercial'] == '1'); ?>> 商用可
+                            </label>
+                        </div>
                         <div class="search-item">
-                            <select name="cat" class="search-select">
-                                <option value="0">ジャンルをえらぶ</option>
+                            <select name="genre" class="search-select">
+                                <option value="0">ジャンル</option>
                                 <?php
                                 $categories = get_categories(array('orderby' => 'name', 'order' => 'ASC'));
                                 foreach ($categories as $category) {
                                     $label = !empty($category->description) ? $category->description : $category->name;
-                                    $selected = (get_query_var('cat') == $category->term_id) ? 'selected' : '';
+                                    $current_cat = isset($_GET['genre']) ? $_GET['genre'] : '';
+                                    $selected = ($current_cat == $category->term_id) ? 'selected' : '';
                                     echo '<option value="' . esc_attr($category->term_id) . '" ' . $selected . '>' . esc_html($label) . '</option>';
                                 }
                                 ?>
@@ -93,10 +100,11 @@
                         </div>
                         <div class="search-item">
                             <select name="sort" class="search-select">
+                                <?php $current_sort = isset($_GET['sort']) ? $_GET['sort'] : get_query_var('sort'); ?>
                                 <option value="">並び替え</option>
-                                <option value="new" <?php selected(get_query_var('sort'), 'new'); ?>>新しいもの順</option>
-                                <option value="old" <?php selected(get_query_var('sort'), 'old'); ?>>古いもの順</option>
-                                <option value="rand" <?php selected(get_query_var('sort'), 'rand'); ?>>ランダム</option>
+                                <option value="new" <?php selected($current_sort, 'new'); ?>>新しいもの順</option>
+                                <option value="old" <?php selected($current_sort, 'old'); ?>>古いもの順</option>
+                                <option value="rand" <?php selected($current_sort, 'rand'); ?>>ランダム</option>
                             </select>
                         </div>
                     </div>
@@ -105,12 +113,12 @@
                         <div class="color-dots sp-color-dots">
                             <?php
                             $colors = array('brown'=>'Brown', 'blue'=>'Blue', 'green'=>'Green', 'red'=>'Red', 'white'=>'White', 'colorful'=>'Colorful');
-                            $current_color = get_query_var('color');
+                            $current_color = isset($_GET['book_color']) ? $_GET['book_color'] : '';
                             foreach ($colors as $slug => $label):
                                 $checked = ($current_color === $slug) ? 'checked' : '';
                             ?>
                                 <label class="color-dot-wrapper">
-                                    <input type="radio" name="color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
+                                    <input type="radio" name="book_color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
                                     <span class="color-dot color-<?php echo esc_attr($slug); ?>" title="<?php echo esc_attr($label); ?>"></span>
                                 </label>
                             <?php endforeach; ?>
@@ -184,9 +192,6 @@
             </nav>
 
             <div class="sidebar-news">
-                <span class="search-label">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/icon_news.png" alt="News" style="width:16px; vertical-align:middle;"> 更新情報
-                </span>
                 <?php
                 $news_query = new WP_Query(array(
                     'post_type'      => 'blog',
@@ -196,9 +201,13 @@
                 if ($news_query->have_posts()) :
                     while ($news_query->have_posts()) : $news_query->the_post();
                         $news_title = get_the_title();
+                        $news_date = get_the_time('Y/m/d');
                         ?>
+                        <span class="search-label" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span><img src="<?php echo get_template_directory_uri(); ?>/images/icon_news.png" alt="News" style="width:16px; vertical-align:middle; margin-right:5px;"> 更新情報</span>
+                            <span class="news-date" style="font-weight: normal; font-size: 11px; margin-bottom: 0;"><?php echo $news_date; ?></span>
+                        </span>
                         <div class="news-item">
-                            <div class="news-date"><?php echo get_the_time('Y/m/d'); ?></div>
                             <div class="news-title">
                                 <a href="<?php the_permalink(); ?>"><?php echo esc_html($news_title); ?></a>
                             </div>
@@ -216,9 +225,16 @@
                         style="width:16px; vertical-align:middle;"> ブックカバー検索
                 </span>
                 <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
+                    <!-- Commercial Checkbox -->
+                    <div class="search-item" style="margin-bottom: 10px;">
+                        <label class="commercial-checkbox-label">
+                            <input type="checkbox" name="commercial" value="1" <?php checked(isset($_GET['commercial']) && $_GET['commercial'] == '1'); ?>> 商用利用可
+                        </label>
+                    </div>
+
                     <!-- Category Select -->
                     <div class="search-item">
-                        <select name="cat" id="cat" class="search-select">
+                        <select name="genre" id="genre" class="search-select">
                             <option value="0">ジャンルをえらぶ</option>
                             <?php
                             $categories = get_categories(array(
@@ -228,7 +244,8 @@
                             foreach ($categories as $category) {
                                 // Use description if available, otherwise name
                                 $label = !empty($category->description) ? $category->description : $category->name;
-                                $selected = (get_query_var('cat') == $category->term_id) ? 'selected' : '';
+                                $current_cat = isset($_GET['genre']) ? $_GET['genre'] : '';
+                                $selected = ($current_cat == $category->term_id) ? 'selected' : '';
                                 echo '<option value="' . esc_attr($category->term_id) . '" ' . $selected . '>' . esc_html($label) . '</option>';
                             }
                             ?>
@@ -238,10 +255,11 @@
                     <!-- Sort Select -->
                     <div class="search-item">
                         <select name="sort" class="search-select">
+                            <?php $current_sort = isset($_GET['sort']) ? $_GET['sort'] : get_query_var('sort'); ?>
                             <option value="">並び替え</option>
-                            <option value="new" <?php selected(get_query_var('sort'), 'new'); ?>>新しいもの順</option>
-                            <option value="old" <?php selected(get_query_var('sort'), 'old'); ?>>古いもの順</option>
-                            <option value="rand" <?php selected(get_query_var('sort'), 'rand'); ?>>ランダム</option>
+                            <option value="new" <?php selected($current_sort, 'new'); ?>>新しいもの順</option>
+                            <option value="old" <?php selected($current_sort, 'old'); ?>>古いもの順</option>
+                            <option value="rand" <?php selected($current_sort, 'rand'); ?>>ランダム</option>
                         </select>
                     </div>
 
@@ -258,12 +276,12 @@
                                 'white' => 'White',
                                 'colorful' => 'Colorful'
                             );
-                            $current_color = get_query_var('color');
+                            $current_color = isset($_GET['book_color']) ? $_GET['book_color'] : '';
                             foreach ($colors as $slug => $label):
                                 $checked = ($current_color === $slug) ? 'checked' : '';
                                 ?>
                                 <label class="color-dot-wrapper">
-                                    <input type="radio" name="color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
+                                    <input type="radio" name="book_color" value="<?php echo esc_attr($slug); ?>" <?php echo $checked; ?>>
                                     <span class="color-dot color-<?php echo esc_attr($slug); ?>"
                                         title="<?php echo esc_attr($label); ?>"></span>
                                 </label>

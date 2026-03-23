@@ -98,7 +98,7 @@ img {
 .sidebar-logo {
     margin-top: 0;
     margin-left: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 /* ... skipped ... */
 /* Main Content */
@@ -155,7 +155,7 @@ img {
 }
 
 .gMenu-list li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     margin-left: 15px;
     width: 40%;
 }
@@ -564,11 +564,6 @@ img {
     margin-top: 20px;
 }
 
-.arrow {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-}
 
 .arrow::before {
     content: "";
@@ -1058,6 +1053,30 @@ h2.unified-h2::after {
     margin-bottom: 10px;
 }
 
+/* Commercial Use Checkbox Pill Button */
+.commercial-checkbox-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 8px 15px;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+.commercial-checkbox-label:has(input:checked) {
+    background-color: #f0f4fa;
+    border-color: #2e558f;
+    color: #2e558f;
+}
+
+
 /* Select Box Styling */
 .search-select {
     width: 100%;
@@ -1085,7 +1104,7 @@ h2.unified-h2::after {
 .color-dots {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 9px;
 }
 
 /* Hide Radio Buttons */
@@ -1733,6 +1752,9 @@ body.is-loaded {
         margin-bottom: 10px;
         margin-right: 10px;
     }
+    .commercial-checkbox-label {
+        padding: 8px 13px !important;
+    }
     .sp-search-flex .search-item {
         flex: 1;
     }
@@ -1755,7 +1777,7 @@ body.is-loaded {
     .sp-color-dots {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 9px;
     }
     .sp-menu-social {
         display: flex;

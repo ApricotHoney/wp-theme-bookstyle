@@ -61,46 +61,6 @@
 
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var searchForms = document.querySelectorAll('.search-form');
-        searchForms.forEach(function(searchForm) {
-            var inputs = searchForm.querySelectorAll('select, input[type="radio"]');
-            inputs.forEach(function (input) {
-                input.addEventListener('change', function () {
-                    // If it's a radio button, we might want to uncheck if clicked again? 
-                    // Standard radio behavior is cannot uncheck. 
-                    // Implementation: just submit on change.
-                    searchForm.submit();
-                });
-            });
-        });
-
-        // Modal Terms Checkbox Logic
-        const termsCheckbox = document.getElementById('modal-terms-checkbox');
-        const btnPersonal = document.getElementById('modal-btn-personal');
-        const btnCommercial = document.getElementById('modal-btn-commercial');
-
-        if (termsCheckbox && btnPersonal && btnCommercial) {
-            // Initial state (in case browser remembers checkbox state on reload)
-            toggleButtons(termsCheckbox.checked);
-
-            termsCheckbox.addEventListener('change', function () {
-                toggleButtons(this.checked);
-            });
-
-            function toggleButtons(isChecked) {
-                if (isChecked) {
-                    btnPersonal.classList.remove('bd-disabled');
-                    btnCommercial.classList.remove('bd-disabled');
-                } else {
-                    btnPersonal.classList.add('bd-disabled');
-                    btnCommercial.classList.add('bd-disabled');
-                }
-            }
-        }
-    });
-</script>
 <?php wp_footer(); ?>
 </body>
 

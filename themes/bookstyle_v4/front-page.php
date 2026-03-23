@@ -21,9 +21,26 @@
                 'order' => 'DESC'
             );
 
-            // Category Filter
-            if (isset($_GET['cat']) && !empty($_GET['cat']) && $_GET['cat'] > 0) {
-                $args['cat'] = intval($_GET['cat']);
+            // Category Filter (renamed to genre to bypass WP archive redirect)
+            if (isset($_GET['genre']) && !empty($_GET['genre']) && intval($_GET['genre']) > 0) {
+                $args['cat'] = intval($_GET['genre']);
+            }
+
+            // Commercial Filter
+            if (isset($_GET['commercial']) && $_GET['commercial'] == '1') {
+                $args['meta_query'] = array(
+                    'relation' => 'OR',
+                    array(
+                        'key'     => '商用利用url',
+                        'value'   => '',
+                        'compare' => '!=',
+                    ),
+                    array(
+                        'key'     => '商用利用URL',
+                        'value'   => '',
+                        'compare' => '!=',
+                    ),
+                );
             }
 
             // Sort Filter
@@ -42,9 +59,8 @@
                 }
             }
 
-            // Color Filter
-            // Use get_query_var if available, fallback to $_GET
-            $color_query = get_query_var('color') ? get_query_var('color') : (isset($_GET['color']) ? $_GET['color'] : '');
+            // Color Filter (renamed to book_color to bypass WP archive redirect)
+            $color_query = isset($_GET['book_color']) ? $_GET['book_color'] : '';
 
             if (!empty($color_query)) {
                 $args['tax_query'] = array(
@@ -133,7 +149,13 @@
                             </div>
                             <div class="cover-title"><?php the_title(); ?></div>
                             <div class="cover-commercial-url">
-                                <?php echo esc_url(get_post_meta(get_the_ID(), '商用利用URL', true)); ?>
+                                <?php
+                                $commercial_url = get_post_meta(get_the_ID(), '商用利用url', true);
+                                if (empty($commercial_url)) {
+                                    $commercial_url = get_post_meta(get_the_ID(), '商用利用URL', true);
+                                }
+                                echo esc_url($commercial_url);
+                                ?>
                             </div>
                             <div class="cover-date"><?php the_time('Y/m/d'); ?></div>
                             <div class="cover-tags">

@@ -55,15 +55,16 @@ jQuery(document).ready(function ($) {
         $('.modal-tags').text(tags);
 
         // Update Personal Use button
-        var personalUrl = 'https://bookstyle.xyz/cover_personal/BC_' + title + '.png';
+        var personalUrl = 'https://bookstyle.xyz/cover_personal/' + title + '.png';
         $('#modal-btn-personal').attr('href', personalUrl);
-        $('#modal-btn-personal').attr('onclick', "dataLayer.push({'event': 'download_bc', 'bc_title': 'BC_" + title + "'});");
+        $('#modal-btn-personal').attr('download', title + '.png');
+        $('#modal-btn-personal').attr('onclick', "dataLayer.push({'event': 'download_bc', 'bc_title': '" + title + ".png'});");
 
         // Update Commercial Use button
         if (commercialUrl) {
             $('#modal-btn-commercial').attr('href', commercialUrl).show();
             $('#modal-btn-commercial').attr('target', '_blank').attr('rel', 'noopener noreferrer');
-            $('#modal-btn-commercial').attr('onclick', "dataLayer.push({'event': 'commercialuse_bc', 'bc_title': 'BC_" + title + "'});");
+            $('#modal-btn-commercial').attr('onclick', "dataLayer.push({'event': 'commercialuse_bc', 'bc_title': '" + title + ".png'});");
         } else {
             $('#modal-btn-commercial').hide();
             $('#modal-btn-commercial').attr('href', '#'); // Reset
@@ -168,6 +169,7 @@ jQuery(document).ready(function ($) {
             href.indexOf('#') === 0 ||
             href.indexOf('tel:') === 0 ||
             href.indexOf('mailto:') === 0 ||
+            $(this).attr('download') !== undefined ||
             target === '_blank') {
             return;
         }
@@ -199,5 +201,40 @@ jQuery(document).ready(function ($) {
             $('body').css('overflow', '');
         }
     });
+
+    // ==========================================
+    // Form and Modal Terms Checking
+    // ==========================================
+    var searchForms = document.querySelectorAll('.search-form');
+    searchForms.forEach(function(searchForm) {
+        var inputs = searchForm.querySelectorAll('select, input[type="radio"], input[type="checkbox"]');
+        inputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                searchForm.submit();
+            });
+        });
+    });
+
+    const termsCheckbox = document.getElementById('modal-terms-checkbox');
+    const btnPersonal = document.getElementById('modal-btn-personal');
+    const btnCommercial = document.getElementById('modal-btn-commercial');
+
+    if (termsCheckbox && btnPersonal && btnCommercial) {
+        toggleButtons(termsCheckbox.checked);
+
+        termsCheckbox.addEventListener('change', function () {
+            toggleButtons(this.checked);
+        });
+
+        function toggleButtons(isChecked) {
+            if (isChecked) {
+                btnPersonal.classList.remove('bd-disabled');
+                btnCommercial.classList.remove('bd-disabled');
+            } else {
+                btnPersonal.classList.add('bd-disabled');
+                btnCommercial.classList.add('bd-disabled');
+            }
+        }
+    }
 
 });
